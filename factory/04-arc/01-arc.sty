@@ -1,0 +1,16 @@
+% == PACKAGES USED == %
+
+\RequirePackage{yhmath}
+
+
+% == DEFINITIONS == %
+
+\newcommand\circarc{\@ifstar{\@circarc@star}{\@circarc@no@star}}
+
+\newcommand*\@circarc@star[2]{%
+	\wideparen{\@no@point{#1}}\vphantom{#1}_{#2}%
+}
+
+\newcommand*\@circarc@no@star[1]{%
+	\wideparen{\@no@point{#1}}%
+}

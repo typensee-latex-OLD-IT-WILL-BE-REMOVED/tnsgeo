@@ -1,0 +1,1449 @@
+%\documentclass[12pt,a4paper]{scrartcl}
+\documentclass[12pt,a4paper]{article}
+
+\makeatletter % Technical doc - START
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ucs}
+
+\usepackage[french]{babel,varioref}
+
+\usepackage[top=2cm, bottom=2cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{enumitem}
+
+\usepackage{multicol}
+
+\usepackage{makecell}
+
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{amsthm}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{listingsutf8}
+
+\usepackage{ifplatform}
+
+\usepackage{ifthen}
+
+\usepackage{cbdevtool}
+
+
+
+% MISC
+
+\newtcblisting{latexex}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing side text
+}
+
+\newtcblisting{latexex-flat}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+}
+
+\newtcblisting{latexex-alone}{%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing only
+}
+
+
+\newcommand\env[1]{\texttt{#1}}
+\newcommand\macro[1]{\env{\textbackslash{}#1}}
+
+
+
+\setlength{\parindent}{0cm}
+\setlist{noitemsep}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Remarque}
+
+\usepackage[raggedright]{titlesec}
+
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{0.5em}
+
+
+\newcommand\separation{
+	\medskip
+	\hfill\rule{0.5\textwidth}{0.75pt}\hfill
+	\medskip
+}
+
+
+\newcommand\extraspace{
+	\vspace{0.25em}
+}
+
+
+\newcommand\whyprefix[2]{%
+	\textbf{\prefix{#1}}-#2%
+}
+
+\newcommand\mwhyprefix[2]{%
+	\texttt{#1 = #1-#2}%
+}
+
+\newcommand\prefix[1]{%
+	\texttt{#1}%
+}
+
+
+\newcommand\inenglish{\@ifstar{\@inenglish@star}{\@inenglish@no@star}}
+
+\newcommand\@inenglish@star[1]{%
+	\emph{\og #1 \fg}%
+}
+
+\newcommand\@inenglish@no@star[1]{%
+	\@inenglish@star{#1} en anglais%
+}
+
+
+\newcommand\ascii{\texttt{ASCII}}
+
+
+% Example
+\newcounter{paraexample}[subsubsection]
+
+\newcommand\@newexample@abstract[2]{%
+	\paragraph{%
+		#1%
+		\if\relax\detokenize{#2}\relax\else {} -- #2\fi%
+	}%
+}
+
+
+
+\newcommand\newparaexample{\@ifstar{\@newparaexample@star}{\@newparaexample@no@star}}
+
+\newcommand\@newparaexample@no@star[1]{%
+	\refstepcounter{paraexample}%
+	\@newexample@abstract{Exemple \theparaexample}{#1}%
+}
+
+\newcommand\@newparaexample@star[1]{%
+	\@newexample@abstract{Exemple}{#1}%
+}
+
+
+% Change log
+\newcommand\topic{\@ifstar{\@topic@star}{\@topic@no@star}}
+
+\newcommand\@topic@no@star[1]{%
+	\textbf{\textsc{#1}.}%
+}
+
+\newcommand\@topic@star[1]{%
+	\textbf{\textsc{#1} :}%
+}
+
+\makeatother % Technical doc - END
+
+
+\usepackage{ tnsgeo }
+
+
+\begin{document}
+
+\renewcommand\labelitemi{\raisebox{0.125em}{\tiny\textbullet}}
+\renewcommand{\labelitemii}{---}
+
+\title{   %
+	Le package \texttt{ tnsgeo }\\%
+	{\footnotesize Code source disponible sur \url{ https://github.com/typensee-latex/tnstools.git }.}\\%
+{\footnotesize Version \texttt{0.0.0-beta} développée et testée sur \macosxname{}.}%
+}
+\author{Christophe BAL}
+\date{2020-07-10}{{{{{{{{{{{{
+
+\maketitle
+
+
+\vspace{2em}
+
+\hrule
+
+\tableofcontents
+
+\vspace{1.5em}
+
+\hrule
+
+\newpage
+
+\section{Introduction}
+
+Le package \verb+tnsgeo+ propose des macros utiles pour une rédaction efficace de textes parlant de géométrie élémentaire.
+
+\begin{remark}
+	Ce package s'appuie sur \verb+tnscom+ disponible sur \url{https://github.com/typensee-latex/tnscom.git}
+\end{remark}
+\section{Points et lignes}
+
+\subsection{Points}
+
+\newparaexample{Sans indice}
+
+\begin{latexex}
+$\pt{I}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Avec un indice}
+
+\begin{latexex}
+$\pt*{I}{1}$ ou
+$\pt*{I}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsection{Lignes}
+
+\newparaexample{Les droites}
+
+Dans l'exemple suivant, le préfixe \prefix{g} est pour \whyprefix{g}{éometrie} tandis que \prefix{p} est pour \whyprefix{p}{oint}.
+
+\begin{latexex}
+$\gline{A}{B}$ ,
+$\gline{\pt{A}}{\pt{B}}$ ou
+$\pgline{A}{B}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Les segments}
+
+Les macros \macro{segment} et \macro{psegment} ont un comportement similaire à \macro{gline} et \macro{pgline}.
+
+\begin{latexex}
+$\segment{A}{B}$ ,
+$\segment{\pt{A}}{\pt{B}}$ ou
+$\psegment{A}{B}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Les demi-droites}
+
+Dans l'exemple suivant, le préfixe \prefix{h} est pour \whyprefix{h}{alf}  soit \inenglish{moitié}.
+
+\begin{latexex}
+$\hgline{A}{B}$ ,
+$\hgline{\pt{A}}{\pt{B}}$ ou
+$\phgline{A}{B}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{D'autres demi-droites}
+
+Ce qui suit nécessite d'utilise l'argument optionnel de \macro{gline} et \macro{pgline}. La valeur \prefix{OC} provient de \whyprefix{O}{pened} -- \whyprefix{C}{losed} soit \inenglish{ouvert -- fermé}.
+
+\begin{latexex}
+$\gline[OC]{A}{B}$ ,
+$\gline[OC]{\pt{A}}{\pt{B}}$ ou
+$\pgline[OC]{A}{B}$
+\end{latexex}
+
+
+\begin{remark}
+	Les segments utilisent en fait l'option \prefix{C} et les demi-droites standard l'option \prefix{CO}.
+	La valeur par défaut est \prefix{O}.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\subsection{Droites parallèles ou non}
+
+Les opérateurs \macro{parallel} et \macro{nparallel} utilisent des obliques au lieu de barres verticales comme le montre l'exemple qui suit où \macro{stdnparallel} est un alias de \macro{nparallel} fourni par le package \verb+amssymb+, et \macro{stdparallel} est un alias de la version standard de \macro{parallel} proposée par \LaTeX{}.
+
+\begin{latexex}
+$\pgline{A}{B} \parallel \pgline{C}{D}$
+au lieu de
+$\pgline{A}{B}
+ \stdparallel \pgline{C}{D}$
+
+$\pgline{E}{F} \nparallel \pgline{G}{H}$
+au lieu de
+$\pgline{E}{F}
+ \stdnparallel \pgline{G}{H}$
+\end{latexex}
+
+
+% ---------------------- %
+\section{Vecteurs}
+
+\subsection{Les écrire}
+
+\newparaexample{}
+
+\begin{latexex}
+$\vect{ABCDEF}$  ,
+$\vect*{e}{rot}$ ou
+$\vect{e_{rot}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{}
+
+\begin{latexex}
+$\vect{i}$ ou
+$\vect*{j}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+% \section{Vecteurs}
+
+\subsection{Norme}
+
+Ci-dessous l'argument optionnel de \macro{vnorm} vaut \prefix{b} par défaut pour \whyprefix{b}{ig} soit \inenglish{gros} mais l'on peut aussi utiliser \prefix{s} pour \whyprefix{s}{mall} soit \inenglish*{petit}. Par contre \macro{vnorm} n'a pas d'option.
+
+\begin{latexex}
+ $\norm{\vect{i}} = \vnorm{i}$
+
+ $\norm   {\dfrac{2}{7} \vect*{e}{k}}
+= \norm[s]{\dfrac{2}{7} \vect*{e}{k}}$
+\end{latexex}
+
+
+\begin{remark}
+	Le code \LaTeX{} pour des doubles barres extensibles ou non vient directement de ce message : \url{https://tex.stackexchange.com/a/43009/6880}.
+\end{remark}
+
+
+% ---------------------- %
+%\section{Vecteurs}
+
+\subsection{Produit scalaire}
+
+\newparaexample{Version longue}
+
+\begin{latexex}
+$\dotprod{\dfrac{1}{2} \vect{u}}%
+         {\vect{v}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Écriture \og à la physicienne \fg}
+
+Dans l'exemple suivant, l'option \prefix{r} est pour \whyprefix{r}{after} soit \inenglish{chevron}, et dans \prefix{sr} le \prefix{s} est pour \whyprefix{s}{mall} soit \inenglish{petit}. Les physiciens aiment bien cette notation.
+
+\begin{latexex}
+$\dotprod[r]{\dfrac{1}{2} \vect{u}}%
+            {\vect{v}}$
+
+$\dotprod[sr]{\dfrac{1}{2} \vect{u}}%
+             {\vect{v}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Version courtes mais restrictive}
+
+Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
+
+\begin{latexex}
+$\vdotprod{u}{v}$
+ 
+$\vdotprod[r] {u}{v}$ comme
+$\vdotprod[sr]{u}{v}$
+\end{latexex}
+
+
+% ---------------------- %
+
+%
+%\newparaexample{Écriture formelle développée}
+%
+%Ce qui suit peut rendre service... ou pas.
+%Dans l'exemple ci-dessous \prefix{exp} est pour \whyprefix{exp}{and} c'est à dire \inenglish{développer}, \prefix{c} pour \macro{cdot} et enfin \prefix{t} pour \macro{times}.
+%
+%\begin{latexex}
+%$\dotprod[exp]{\vect{u}}{\vect{v}}$
+%
+%$\vdotprod[cexp]{u}{v}$
+%
+%$\vdotprod[texp]{u}{v}$
+%\end{latexex}
+
+
+% ---------------------- %
+%\section{Vecteurs}
+
+\subsection{Produit vectoriel}
+
+\paragraph{Exemple 1 - Écriture symbolique - Version longue}
+
+\begin{latexex}
+$\crossprod{\dfrac{1}{2} \vect{i}}%
+           {\vect{j}}$ 
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\paragraph{Exemple 2 - Écriture symbolique - Version courte mais restrictive}
+
+\begin{latexex}
+$\vcrossprod{i}{j}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\paragraph{Exemple 3 - Explication des calculs}
+
+Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler} et \prefix{v} pour \whyprefix{v}{ecteur}.
+
+\begin{latexex}
+$\calccrossprod{\vect{u}}{x }{y }{z }%
+               {\vect{v}}{x'}{y'}{z'}
+ =
+ \vcalccrossprod       {u}{x }{y }{z }%
+                       {v}{x'}{y'}{z'}$
+
+$\vcalccrossprod{AB}{x_B - x_A}%
+                    {y_B - y_A}%
+                    {z_B - z_A}%
+                {CD}{x_D - x_C}%
+                    {y_D - y_C}%
+                    {z_D - z_C}$
+\end{latexex}
+
+
+Avec un public averti on peut juste proposer les coordonnées sans les décorations comme ci-après via la version étoilée de \macro{vcalccrossprod} mais ceci fonctionne aussi avec \macro{calccrossprod}.
+
+\begin{latexex}
+$\vcalccrossprod*{u}{x }{y }{z }%
+                 {v}{x'}{y'}{z'}$
+\end{latexex}
+
+
+Enfin si les vecteurs vous gênent il suffira d'utiliser l'option \verb+novec+ pour \verb+no+ \whyprefix{vec}{tor} soit \inenglish{pas de vecteur} comme ci-après.
+Ceci fonctionne aussi pour la macro \macro{calccrossprod}.
+Il peut sembler un peu lourd d'avoir des arguments pour des vecteurs non affichés mais ce choix permet à l'usage de faire des copier-coller redoutables d'efficacité !
+
+\begin{latexex}
+$\vcalccrossprod[novec]{u}{x }{y }{z }%
+                       {v}{x'}{y'}{z'}
+ =
+ \vcalccrossprod*[novec]{u}{x }{y }{z }%
+                        {v}{x'}{y'}{z'}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\paragraph{Exemple 4 - Les coordonnées  \og détaillées \fg}
+
+Pour avoir le détail directement dans des coordonnées vous pouvez faire appel à la macro \macro{coordcrossprod} où le préfixe \prefix{coord} fait référence à \whyprefix{coord}{onnée}
+\footnote{
+	En coulisse on utilise la macro \macro{coord} présentée dans la section \ref{coordinates} page \pageref{coordinates}. 
+}.
+On peut utiliser des options pour choisir certains paramètres de mise en forme.
+
+\begin{latexex}
+$\coordcrossprod{\dfrac{1}{2}x}{y }{z }%
+                           {x'}{y'}{z'}$
+
+$\coordcrossprod[vb]%
+                {\dfrac{1}{2}x}{y }{z }%
+                           {x'}{y'}{z'}$
+
+$\coordcrossprod[sp,c]%
+                {\dfrac{1}{2}x}{y }{z }%
+                           {x'}{y'}{z'}$
+\end{latexex}
+
+
+Voici les options disponibles. Nous expliquons ensuite comment les utiliser.
+\begin{enumerate}
+	\item \prefix{p} vient de \whyprefix{p}{arenthèses}. Ceci donnera une écriture horizontale.
+
+	\item \prefix{b} vient de \whyprefix{b}{rackets} soit \inenglish{crochets}. Ceci donnera une écriture horizontale.
+
+	\item \prefix{sp} et \prefix{sb} produisent des délimiteurs non extensibles en mode horizontal.
+	      Ici \prefix{s} vient de \whyprefix{s}{mall} soit \inenglish{petit}.
+
+	\item \prefix{vp} et \prefix{vb} produisent des écritures verticales.
+	      Ici \prefix{v} vient de \whyprefix{v}{ertical}.
+
+	\medskip
+
+	\item \prefix{s} tout seul demande d'utiliser un espace pour séparer les facteurs de chaque produit.
+
+	\item \prefix{t} tout seul demande d'utiliser \macro{times} comme opérateur de multiplication.
+
+	\item \prefix{c} tout seul demande d'utiliser \macro{cdot} comme opérateur de multiplication.
+\end{enumerate}
+
+
+On peut indiquer des options vis à vis du mode vertical ou horizontal avec des délimiteurs extensibles ou non éventuellement, ou bien sur le symbole pour les produits. On peut aussi combiner deux de ces typs de choix en les séparant par une virgule ce qui fait un total de $6\times3 = 18$ combinaisons possibles.
+La valeur par défaut est \verb+p,s+.
+
+
+\bigskip
+
+
+\textbf{Attention !}
+Les produits sont produits stupidement. Autrement dit ce sera à vous d'ajouter des parenthèses là où il y en aura besoin sinon vous obtiendrez des horreurs comme celle ci-dessous.
+    
+\begin{latexex}
+$\coordcrossprod[vb]%
+         {x_B - x_A}{y_B - y_A}%
+         {z_B - z_A}{x_D - x_C}%
+         {y_D - y_C}{z_D - z_C}$
+\end{latexex}
+
+Ici nous n'avons pas d'autre choix que de corriger le tir nous-même.
+Ceci étant indiqué, ce genre de situation est très rare dans la vraie vie mathématique où l'on évite d'avoir à calculer un produit vectoriel avec des expressions compliquées.
+    
+\begin{latexex}
+$\coordcrossprod[vb]%
+       {(x_B - x_A)}{(y_B - y_A)}%
+       {(z_B - z_A)}{(x_D - x_C)}%
+       {(y_D - y_C)}{(z_D - z_C)}$
+\end{latexex}
+
+
+% ---------------------- %
+%\section{Vecteurs}
+
+\subsection{Plan -- Déterminant de deux vecteurs} \label{colinearity-criteria}
+
+\newparaexample{Version décorée}
+
+Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler}.
+
+\begin{latexex}
+$\calcdetplane{\vect{u}}{x }{y }%
+              {\vect{v}}{x'}{y'}$
+ou
+$\calcdetplane{\vect{AB}}%
+              {x_B - x_A}{y_B - y_A}%
+              {\vect{CD}}%
+              {x_D - x_C}{y_D - y_C}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Version non décorée}
+
+\begin{latexex}
+$\calcdetplane*{\vect{u}}{x }{y }%
+               {\vect{v}}{x'}{y'}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Rédaction raccourcie pour les vecteurs}
+
+Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
+
+\begin{latexex}
+$\vcalcdetplane{u}{x }{y }%
+               {v}{x'}{y'}
+ =
+ \vcalcdetplane*{u}{x }{y }%
+                {v}{x'}{y'}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Versions sans les vecteurs}
+
+Dans l'exemple suivant, on utilise la valeur \verb+novec+ pour l'argument optionnel de \macro{vcalcdetplane} qui par défaut est \verb+vec+ pour pour \whyprefix{vec}{teur}.
+À l'usage ceci permet des copier-coller très efficaces !
+
+
+\begin{latexex}
+ $\vcalcdetplane[novec] {u}{x }{y }%
+                        {v}{x'}{y'}
+= \vcalcdetplane*[novec]{u}{x }{y }%
+                        {v}{x'}{y'}$
+\end{latexex}
+
+
+\begin{remark}
+	Ce qui précède marche aussi avec les macros \macro{calcdetplane} et \macro{calcdetplane*}.
+\end{remark}
+
+
+% ---------------------- %
+
+
+\newparaexample{Calcul développé}
+
+Grâce à l'argument optionnel de \macro{calcdetplane} ou \macro{vcalcdetplane}, il est aussi possible d'obtenir le résultat développé du calcul comme ci-après
+où \prefix{exp} est pour \whyprefix{exp}{and} soit \inenglish{développer}, \prefix{c} pour \macro{cdot} et enfin \prefix{t} pour \macro{times}.
+Même si les vecteurs ne sont pas utilisés pour la mise en forme, on obtient ici une méthode très pratique à l'usage car permettant de faire des copier-coller.
+
+\begin{latexex}
+$\vcalcdetplane[exp]{u}{x }{y }%
+                    {v}{x'}{y'}$
+
+$\vcalcdetplane[cexp]{u}{x }{y }%
+                     {v}{x'}{y'}$
+
+$\vcalcdetplane[texp]{u}{x }{y }%
+                     {v}{x'}{y'}$
+\end{latexex}
+
+
+\begin{remark}
+	Ce qui précède marche aussi avec les versions étoilées.
+\end{remark}
+
+
+\textbf{Attention !}
+Le développement effectué est stupide. Autrement dit ce sera à vous d'ajouter des parenthèses là où il y en aura besoin sinon vous obtiendrez des horreurs comme celle qui suit.
+    
+\begin{latexex}
+$\vcalcdetplane[exp]{AB}%
+                    {x_B - x_A}%
+                    {y_B - y_A}%
+                    {CD}%
+                    {x_D - x_C}%
+                    {y_D - y_C}$
+\end{latexex}
+
+Ici nous n'avons pas d'autre choix que de régler le problème à la amin. Ce genre de situation n'est pas rare dans la vraie vie mathématique.
+    
+\begin{latexex}
+$\vcalcdetplane[exp]{AB}%
+                    {(x_B - x_A)}%
+                    {(y_B - y_A)}%
+                    {CD}%
+                    {(x_D - x_C)}%
+                    {(y_D - y_C)}$
+\end{latexex}
+
+
+% ---------------------- %
+\section{Géométrie cartésienne}
+
+\subsection{Coordonnées} \label{coordinates}
+
+\newparaexample{Des coordonnées seules}
+
+\verb+lymath+ propose, via un argument optionnel, six façons différentes de rédiger des coordonnées seules \emph{(nous verrons après des macros pour les coordonnées d'un point et celles d'un vecteur afin de produire un code \LaTeX{} plus sémantique)}. Commençons par les écritures horizontales où vous noterez l'utilisation de \verb+|+ pour séparer les coordonnées dont le nombre peut être quelconque.
+
+\begin{latexex}
+$\coord    {\dfrac{1}{3} | -4 | 0}$ ou
+$\coord[sp]{\dfrac{1}{3} | -4 | 0}$
+
+$\coord[b] {\dfrac{1}{3} | -4 | 0}$ ou
+$\coord[sb]{\dfrac{1}{3} | -4 | 0}$
+\end{latexex}
+
+
+Il existe en plus deux versions verticales.
+
+\begin{latexex}
+$\coord[vp]{3 | -4}$ ou
+$\coord[vb]{3 | -4}$
+\end{latexex}
+
+
+Voici d'où viennent les noms des options.
+\begin{enumerate}
+	\item \prefix{p}, qui est aussi la valeur par défaut, vient de \whyprefix{p}{arenthèses}.
+
+	\item \prefix{b} vient de \whyprefix{b}{rackets} soit \inenglish{crochets}.
+
+	\item \prefix{s} pour \whyprefix{s}{mall} soit \inenglish{petit} permet d'avoir des délimiteurs non extensibles en mode horizontal car par défaut ils le sont.
+
+	\item \prefix{v} pour \whyprefix{v}{ertical} demande de produire une écriture verticale.
+\end{enumerate}
+
+
+% ---------------------- %
+
+
+\newparaexample{Coordonnées d'un point}
+
+La macro \macro{pcoord} avec \prefix{p} pour  \whyprefix{p}{oint} prend un argument supplémentaire avant les coordonnées qui est le nom d'un point qui sera mis en forme par la macro \macro{pt}. Si vous ne souhaitez pas que \macro{pt} soit appliquée, il suffit de passer via la version étoilée \macro{pcoord*}.
+
+\begin{latexex}
+$\pcoord{A}{3 | -4 | 0 | -1}$ ou
+$\pcoord*{\Sigma}{7 | 9 | 8}$
+\end{latexex}
+
+
+Toutes les options disponibles avec \macro{coord} le sont aussi avec  \macro{pcoord}. 
+
+\begin{latexex}
+$\pcoord[b]{A}{3 | -4 | 0 | -1}$ ou
+$\pcoord*[b]{\Sigma}{7 | 9 | 8}$
+\end{latexex}
+
+
+
+% ---------------------- %
+
+
+\newparaexample{Coordonnées d'un vecteur}
+
+Le fonctionnement de \macro{vcoord} est similaire à celui de \macro{pcoord} si ce n'est que c'est la macro \macro{vect} qui sera appliquée si besoin.
+
+\begin{latexex}
+$\vcoord{u}{3 | -4}$ ou
+$\vcoord*{\dfrac{1}{2} \vect{u}}%
+         {3 | -4}$
+
+$\vcoord[vp]{u}{3 | -4}$ ou
+$\vcoord*[vp]{\dfrac{1}{2} \vect{u}}%
+             {3 | -4}$
+\end{latexex}
+
+
+% ---------------------- %
+% \section{Géométrie cartésienne}
+
+\subsection{Nommer un repère}
+
+\newparaexample{La méthode basique}
+
+Commençons par la manière la plus basique d'écrire un repère \textit{(nous verrons d'autres méthodes qui peuvent être plus efficaces)}.
+
+\begin{latexex}
+$\axes{\pt{O} %
+     | \pt{I} | \pt{J}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{La méthode basique en version étoilée}
+
+Dans l'exemple ci-dessous, on voit que la version étoilée produit des petites parenthèses.
+\begin{latexex}
+$\axes{\pt{O} %
+     | \dfrac{7}{3} \vect{i} %
+     | \vect{j}}$
+ou
+$\axes*{\pt{O} %
+     | \dfrac{7}{3} \vect{i} %
+     | \vect{j}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{La méthode basique en dimension quelconque}
+
+Il faut au minimum deux "morceaux" séparés par des barres \verb+|+, cas de la dimension $1$, mais il n'y a pas de maximum, cas d'une dimension quelconque $n > 0$.
+
+\begin{latexex}
+$\axes{\pt{O} %
+     | \vect*{i}{1} %
+     | \vect*{i}{2} %
+     | \vect*{i}{3} %
+     | \dots %
+     | \vect*{i}{9} %
+     | \vect*{i}{10} %
+     | \vect*{i}{11} %
+     | \vect*{i}{12}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Repère affine}
+
+Dans l'exemple suivant, le préfixe \prefix{p} est pour \whyprefix{p}{oint}.
+
+\begin{latexex}
+$\paxes{O | I | J | K}$
+au lieu de
+$\axes{\pt{O} %
+     | \pt{I} | \pt{J} | \pt{K}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Repère vectoriel (méthode 1)}
+
+Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
+
+\begin{latexex}
+$\vaxes{\pt{O} | i | j}$
+au lieu de
+$\axes{\pt{O} | \vect{i} | \vect{j}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Repère vectoriel (méthode 2)}
+
+Dans l'exemple suivant, le préfixe \prefix{pv} permet de combiner ensemble les fonctionnalités proposées par les préfixes \prefix{p} et \prefix{v}.
+
+\begin{latexex}
+$\pvaxes{O | i | j}$
+au lieu de
+$\axes{\pt{O} | \vect{i} | \vect{j}}$
+\end{latexex}
+
+
+% ---------------------- %
+% \section{Géométrie}
+
+\section{Arcs circulaires}
+
+\newparaexample{}
+
+\begin{latexex}
+$\circarc{ABCDEF}$ ,
+$\circarc*{A}{rot}$ ou
+$\circarc{A_{rot}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{}
+
+\begin{latexex}
+$\circarc{i}$ ou
+$\circarc*{j}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+% \section{Géométrie}
+
+\section{Angles}
+
+\subsection{Angles géométriques \og intérieurs \fg}
+
+\newparaexample{}
+
+\begin{latexex}
+$\anglein {ABCDEF}$
+
+$\anglein* {A}{rot}$
+
+$\anglein {A_{rot}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Cacher les points du i et du j}
+
+\begin{latexex}
+$\anglein{i}$ et
+$\anglein*{j}{2}$
+\end{latexex}
+
+
+% ---------------------- %
+% \section{Géométrie}
+
+%\section{Angles}
+
+\subsection{Angles orientés de vecteurs}
+
+\paragraph{Sans chapeau - Version longue}
+
+L'option par défaut est \prefix{p} pour \whyprefix{p}{arenthèse}.
+Dans \prefix{sp} le \prefix{s} est pour \whyprefix{s}{mall} soit \inenglish{petit}.
+ 
+\begin{latexex}
+$\angleorient    {\dfrac{1}{2} \vect{i}}%
+                 {\vect{j}}$
+
+$\angleorient[sp]{\dfrac{1}{2} \vect{i}}%
+                 {\vect{j}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\paragraph{Sans chapeau - Version courte mais restrictive}
+
+Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur} qui permet de simplifier la saisie quand l'on a juste des vecteurs nommés avec des lettres
+\emph{(notez que l'option \prefix{sp} n'apporte rien de nouveau)}.
+
+\begin{latexex}
+$\vangleorient    {i}{j}$ comme
+$\vangleorient[sp]{i}{j}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\paragraph{Avec un chapeau}
+
+Dans l'exemple suivant, \prefix{h} est pour \whyprefix{h}{at} soit \inenglish{chapeau}.
+Notez au passage que \prefix{sh} produit juste des parenthèses petites mais ce choix de nom simplifie l'utilisation de la macro \emph{(c'est mieux que \prefix{hsp} par exemple)}.
+
+\begin{latexex}
+$\angleorient[h] {\dfrac{1}{2} \vect{i}}%
+                 {\vect{j}}$
+
+$\angleorient[sh]{\dfrac{1}{2} \vect{i}}%
+                 {\vect{j}}$
+
+$\vangleorient[h] {i}{j}$ comme
+$\vangleorient[sh]{i}{j}$
+\end{latexex}
+
+
+% ---------------------- %
+\newpage
+
+\section{Historique}
+
+Nous ne donnons ici qu'un très bref historique récent
+\footnote{
+	On ne va pas au-delà de un an depuis la dernière version.
+}
+de \verb+tnsgeo+ à destination de l'utilisateur principalement.
+Tous les changements sont disponibles uniquement en anglais dans le dossier \verb+change-log+ : voir le code source de \verb+tnsgeo+ sur \verb+github+.
+
+\begin{description}
+% Changes shown - START
+
+    \medskip
+    \item[2020-07-10] Première version \verb+0.0.0-beta+.
+% ------------------------ %
+
+% Changes shown - END 
+\end{description}
+
+
+\newpage
+\section{Toutes les fiches techniques} \label{techincal-ids}
+
+
+\subsection{Points et lignes}
+
+\subsubsection{Points}
+
+\IDmacro*{pt}{1}
+
+\IDarg{} un texte donnant le nom d'un point.
+
+
+\separation
+
+
+\IDmacro*{pt*}{2}
+
+\IDarg{1} un texte indiquant $\pt{UP}$ dans le nom $\pt*{UP}{down}$ d'un point.
+
+\IDarg{2} un texte indiquant $down$ dans le nom $\pt*{UP}{down}$ d'un point.
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Lignes}
+
+\IDmacro{gline}{1}{2}   où \quad \mwhyprefix{g}{eometry}
+
+\IDmacro{pgline}{1}{2}  où \quad \mwhyprefix{p}{oint}
+                              et \mwhyprefix{g}{eometry}
+
+\IDoption{} pour indiquer les parenthèses ou crochets à utiliser, les valeurs possibles étant \prefix{O}, valeur par défaut, \prefix{C}, \prefix{CO} et \prefix{OC}.
+
+\IDarg{1} le 1\ier{} point géométrique.
+
+\IDarg{2} le 2\ieme{} point géométrique.
+
+
+\separation
+
+
+\IDmacro*{hgline}{2}   où \quad \mwhyprefix{h}{alf}
+                             et \mwhyprefix{g}{eometry}
+
+\IDmacro*{phgline}{2}  où \quad \mwhyprefix{p}{oint},
+                                \mwhyprefix{h}{alf}
+                             et \mwhyprefix{g}{eometry}
+
+\extraspace
+
+\IDmacro*{segment}{2}
+
+\IDmacro*{psegment}{2}  où \quad \mwhyprefix{p}{oint}
+
+\IDarg{1} le 1\ier{} point géométrique.
+
+\IDarg{2} le 2\ieme{} point géométrique.
+
+
+% ---------------------- %
+
+
+
+\subsubsection{Droites parallèles ou non}
+
+\IDmacro*{parallel}{0}
+
+\IDmacro*{nparallel}{0}
+
+\extraspace
+
+\IDmacro*{stdparallel}{0}
+
+\IDmacro*{stdnparallel}{0}
+\subsection{Vecteurs}
+
+\subsubsection{Vecteurs}
+
+\IDmacro*{vect}{1}
+
+\IDarg{} un texte donnant le nom d'un vecteur.
+
+
+\separation
+
+
+\IDmacro*{vect*}{2}
+
+\IDarg{1} un texte indiquant $up$ dans le nom $\vect*{up}{down}$ d'un vecteur.
+
+\IDarg{2} un texte indiquant $down$ dans le nom $\vect*{up}{down}$ d'un vecteur.
+\subsubsection{Norme}
+
+\IDmacro{norm}{1}{1}
+
+\IDoption{} la valeur par défaut est \verb+b+. Deux options disponibles.
+\begin{enumerate}
+	\item \verb+b+ : des doubles barres extensibles sont utilisées.
+
+	\item \verb+s+ : des doubles barres non extensibles sont utilisées.
+\end{enumerate}
+
+
+\IDarg{} le vecteur sur lequel appliquer la norme.
+
+
+\separation
+
+\IDmacro*{vnorm}{1}
+
+\IDarg{} le nom du vecteur sur lequel appliquer la norme.
+\subsubsection{Produit scalaire}
+
+\IDmacro{dotprod}{1}{2}
+
+\IDoption{} la valeur par défaut est \verb+u+ pour \whyprefix{u}{sual} soit \inenglish{habituel}.  Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+u+ : écriture habituelle avec un point.
+
+	\item \verb+r+ : écriture \og à la physicienne \fg{} avec des chevrons extensibles.
+
+	\item \verb+sr+ : écriture \og à la physicienne \fg{} avec des chevrons non extensibles.
+
+%	\item \verb+exp+ : une formule développée avec un espace pour séparer les facteurs de chaque produit.
+%
+%	\item \verb+cexp+ : comme \verb+exp+ mais avec le symbole $\cdot$ obtenu via \macro{cdot}.
+%
+%	\item \verb+texp+ : comme \verb+exp+ mais avec le symbole $\times$.
+\end{enumerate}
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+
+\separation
+
+
+\IDmacro{vdotprod}{1}{2} où \quad \mwhyprefix{v}{ector}
+
+\IDoption{} voir les explications précédentes données pour \macro{dotprod}.
+
+\IDarg{1} le nom du 1\ier{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2} le nom du 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+\subsubsection{Produit vectoriel}
+
+
+\IDmacro*{crossprod}{2}
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+
+\separation
+
+
+\IDmacro*{vcrossprod}{2} où \quad \mwhyprefix{v}{ector}
+
+\IDarg{1} le nom du 1\ier{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2} le nom du 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+
+
+\separation
+
+
+\IDmacro*{calccrossprod}{8}  où \quad \mwhyprefix{calc}{ulate}
+
+\IDmacro*{calccrossprod*}{8}  où \quad \mwhyprefix{calc}{ulate}
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{5} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
+
+
+\separation
+
+
+\IDmacro*{vcalccrossprod}{8}  où \quad \mwhyprefix{calc}{ulate}
+                                    et \mwhyprefix{v}{ector}
+
+\IDmacro*{vcalccrossprod*}{8}  où \quad \mwhyprefix{calc}{ulate}
+                                    et \mwhyprefix{v}{ector}
+
+\IDarg{1} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{5} le 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
+
+
+\separation
+
+
+\IDmacro{coordcrossprod}{1}{6}  où \quad \mwhyprefix{coord}{inate}
+
+\IDoption{} la valeur par défaut est \verb+p,s+. 
+            Voici les différentes valeurs possibles pour la mise en forme des coordonnées uniquement \emph{(voir la section \ref{coordinates-tech} page \pageref{coordinates-tech})}.
+\begin{enumerate}
+	\item \verb+p+ : écriture horizontale avec des parenthèses extensibles.
+
+	\item \verb+sp+ : écriture horizontale avec des parenthèses non extensibles.
+
+	\item \verb+vp+ : écriture verticale avec des parenthèses.
+
+	\item \verb+b+ : écriture horizontale avec des crochets extensibles.
+
+	\item \verb+sb+ : écriture horizontale avec des crochets non extensibles.
+
+	\item \verb+vb+ : écriture verticale avec des crochets.
+\end{enumerate}
+
+            Pour les produits, voici ce qui est proposé.
+\begin{enumerate}
+	\item \prefix{s} : un espace pour séparer les facteurs de chaque produit.
+
+	\item \prefix{t} : \macro{times} comme opérateur de multiplication.
+
+	\item \prefix{c} : \macro{cdot} comme opérateur de multiplication.
+\end{enumerate}
+
+            On peut combiner deux types de choix en les séparant par une virgule comme dans \verb+p,s+ la valeur par défaut.
+
+
+\IDarg{1..3} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{4..6} les coordonnées du 2\ieme{} vecteur.
+\subsubsection{Plan -- Déterminant de deux vecteurs}
+
+\IDmacro{calcdetplane}{1}{6}  où \quad \mwhyprefix{calc}{ulate}
+
+\IDmacro{calcdetplane*}{1}{6} où \quad \mwhyprefix{calc}{ulate}
+
+
+\IDoption{} la valeur par défaut est \verb+vec+. Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+vec+ : les vecteurs sont affichés si besoin.
+
+	\item \verb+novec+ : les vecteurs ne sont jamais affichés.
+
+	\item \verb+exp+ : ceci demande d'afficher une formule développée en utilisant un espace pour séparer les facteurs de chaque produit.
+
+	\item \verb+cexp+ : comme \verb+exp+ mais avec le symbole $\cdot$ obtenu via \macro{cdot}.
+
+	\item \verb+texp+ : comme \verb+exp+ mais avec le symbole $\times$.
+\end{enumerate}
+
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2} la 1\iere{} coordonnée du 1\ier{} vecteur.
+
+\IDarg{3} la 2\ieme{} coordonnée du 1\ier{} vecteur.
+
+\IDarg{4} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{5} la 1\iere{} coordonnée du 2\ieme{} vecteur.
+
+\IDarg{6} la 2\ieme{} coordonnée du 2\ieme{} vecteur.
+
+
+\separation
+
+
+\IDmacro{vcalcdetplane}{1}{6}  où \quad \mwhyprefix{calc}{ulate}
+                                      et \mwhyprefix{v}{ector}
+
+\IDmacro{vcalcdetplane*}{1}{6} où \quad \mwhyprefix{calc}{ulate}
+                                      et \mwhyprefix{v}{ector}
+
+
+\IDoption{} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
+
+\IDarg{1..6} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
+\subsection{Géométrie cartésienne}
+
+\subsubsection{Coordonnées} \label{coordinates-tech}
+
+\IDmacro{coord}{1}{1}
+
+
+\IDoption{} la valeur par défaut est \verb+p+. Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+p+ : écriture horizontale avec des parenthèses extensibles.
+
+	\item \verb+sp+ : écriture horizontale avec des parenthèses non extensibles.
+
+	\item \verb+vp+ : écriture verticale avec des parenthèses.
+
+	\item \verb+b+ : écriture horizontale avec des crochets extensibles.
+
+	\item \verb+sb+ : écriture horizontale avec des crochets non extensibles.
+
+	\item \verb+vb+ : écriture verticale avec des crochets.
+\end{enumerate}
+
+
+\IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+ , chaque morceau étant une coordonnée. Il peut n'y avoir qu'un seul morceau.
+
+
+\separation
+
+
+\IDmacro{pcoord}{1}{2} où \quad \mwhyprefix{v}{ertical}
+
+\IDoption{} voir les indications données pour la macro \macro{coord}.
+
+\IDarg{1} le point auquel sera appliqué automatiquement la macro \macro{pt}.
+
+\IDarg{2} voir les indications données pour l'unique argument obligatoire de la macro \macro{coord}.
+
+
+\separation
+
+
+\IDmacro{pcoord*}{1}{2} où \quad \mwhyprefix{v}{ertical}
+
+\IDoption{} voir les indications données pour la macro \macro{coord}.
+
+\IDarg{1} le point auquel ne sera pas appliqué automatiquement la macro \macro{pt}.
+
+\IDarg{2} voir les indications données pour l'unique argument obligatoire de la macro \macro{coord}.
+
+
+\separation
+
+
+\IDmacro{vcoord}{1}{2} où \quad \mwhyprefix{v}{ertical}
+
+\IDoption{} voir les indications données pour la macro \macro{coord}.
+
+\IDarg{1} le vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2} voir les indications données pour l'unique argument obligatoire de la macro \macro{coord}.
+
+
+\separation
+
+
+\IDmacro{vcoord*}{1}{2} où \quad \mwhyprefix{v}{ertical}
+
+\IDoption{} voir les indications données pour la macro \macro{coord}.
+
+\IDarg{1} le vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2} voir les indications données pour l'unique argument obligatoire de la macro \macro{coord}.
+\subsubsection{Repères}
+
+\IDmacro*{axes}{1}
+
+\IDmacro*{axes*}{1}
+
+\IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
+
+\begin{itemize}[topsep=0pt]
+	\item Le premier morceau est l'origine du repère.
+
+	\item Les morceaux suivants sont des points ou des vecteurs qui "définissent" chaque axe.
+\end{itemize}
+
+
+\separation
+
+\IDmacro*{paxes}{1} où \quad \mwhyprefix{p}{oint}
+
+\IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
+
+\begin{itemize}[topsep=0pt]
+	\item Le premier morceau est le nom de l'origine du repère sur laquelle la macro-commande \macro{pt} sera automatiquement appliquée.
+
+	\item Viennent ensuite les noms des points "définissant" chaque axe. Pour chacun de ces points la macro-commande \macro{pt} sera automatiquement appliquée.
+\end{itemize}
+
+
+\separation
+
+\IDmacro*{vaxes}{1} où \quad \mwhyprefix{v}{ector}
+
+\IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
+
+\begin{itemize}[topsep=0pt]
+	\item Le premier morceau est l'origine du repère.
+
+	\item Viennent ensuite les noms des vecteurs "définissant" chaque axe. Pour chacun de ces vecteurs la macro-commande \macro{vect} sera automatiquement appliquée.
+\end{itemize}
+
+
+\separation
+
+\IDmacro*{pvaxes}{3} où \quad \prefix{pv = p + v}
+
+\IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
+
+\begin{itemize}[topsep=0pt]
+	\item Le premier morceau est le nom de l'origine du repère sur laquelle la macro-commande \macro{pt} sera automatiquement appliquée.
+
+	\item Viennent ensuite les noms des vecteurs "définissant" chaque axe. Pour chacun de ces vecteurs la macro-commande \macro{vect} sera automatiquement appliquée.
+\end{itemize}
+\subsubsection{Arcs circulaires}
+
+\IDmacro*{circarc}{1} où \quad \mwhyprefix{circ}{ular}
+
+\IDarg{} un texte donnant le nom d'un arc circulaire.
+
+
+\separation
+
+
+\IDmacro*{circarc*}{2} où \quad \mwhyprefix{circ}{ular}
+
+\IDarg{1} un texte indiquant $up$ dans le nom $\circarc*{up}{down}$ d'un arc circulaire.
+
+\IDarg{2} un texte indiquant $down$ dans le nom $\circarc*{up}{down}$ d'un arc circulaire.
+\subsubsection{Angles géométriques \og intérieurs \fg}
+
+\IDmacro*{anglein}{1} où \quad \mwhyprefix{in}{terior}
+
+\IDarg{} un texte donnant le nom d'un angle intérieur.
+
+
+\separation
+
+
+\IDmacro*{anglein*}{2} où \quad \mwhyprefix{in}{terior}
+
+\IDarg{1} un texte indiquant $up$ dans le nom $\anglein*{up}{down}$ d'un angle intérieur.
+
+\IDarg{2} un texte indiquant $down$ dans le nom $\anglein*{up}{down}$ d'un angle intérieur.
+\subsubsection{Angles orientés de vecteurs}
+
+\IDmacro{angleorient}{1}{2}
+
+\IDoption{} la valeur par défaut est \verb+p+.  Voici les différentes valeurs possibles.
+\begin{enumerate}
+	\item \verb+p+ : écriture habituelle avec des parenthèses extensibles.
+
+	\item \verb+sp+ : écriture habituelle avec des parenthèses non extensibles.
+
+	\item \verb+h+ : écriture avec un chapeau et des parenthèses extensibles.
+
+	\item \verb+sh+ : écriture avec un chapeau et des parenthèses non extensibles.
+\end{enumerate}
+
+\IDarg{1} le premier vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2} le second vecteur qu'il faut taper via la macro \macro{vect}.
+
+
+\separation
+
+
+\IDmacro{vangleorient}{1}{2} où \quad \mwhyprefix{v}{ector}
+
+\IDoption{} voir les explications précédentes données pour \macro{angleorient}.
+
+\IDarg{1} le nom du premier vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2} le nom du second vecteur sans utiliser la macro \macro{vect}.
+
+
+\end{document}
