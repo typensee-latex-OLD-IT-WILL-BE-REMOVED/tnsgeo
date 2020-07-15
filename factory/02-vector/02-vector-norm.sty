@@ -11,12 +11,12 @@
 %
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
-\let\@old@norm\norm
+\let\tnsgeo@old@norm\norm
 
 \renewcommand\norm[2][b]{%
     \IfEqCase{#1}{%
-        {b}{\@old@norm*{#2}}%
-        {s}{\@old@norm{#2}}%
+        {b}{\tnsgeo@old@norm*{#2}}%
+        {s}{\tnsgeo@old@norm{#2}}%
     }[%
         \PackageError{tnsgeo}{unknown option}%
                              {you can use b (default) or s.}%

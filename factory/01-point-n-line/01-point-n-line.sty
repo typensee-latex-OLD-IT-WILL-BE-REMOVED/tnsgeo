@@ -10,12 +10,12 @@
 
 % Points
 
-\newcommand\pt{\@ifstar{\@pt@star}{\@pt@no@star}}
+\newcommand\pt{\@ifstar{\tnsgeo@pt@star}{\tnsgeo@pt@no@star}}
 
-\newcommand\@pt@no@star[1]{\mathrm{#1}}
+\newcommand\tnsgeo@pt@no@star[1]{\mathrm{#1}}
 
-\newcommand\@pt@star[2]{%
-    \@pt@no@star{#1}_{#2}
+\newcommand\tnsgeo@pt@star[2]{%
+    \tnsgeo@pt@no@star{#1}_{#2}
 }
 
 
@@ -76,8 +76,8 @@
 
 \let\stdnparallel\nparallel
 \renewcommand{\nparallel}{%
-  \mathrel{\mathpalette\not@parallel\relax}%
+  \mathrel{\mathpalette\tnsgeo@not@parallel\relax}%
 }
-\newcommand{\not@parallel}[2]{%
+\newcommand{\tnsgeo@not@parallel}[2]{%
   \ooalign{\reflectbox{$\m@th#1\smallsetminus$}\cr\hfil$\m@th#1\parallel$\cr}%
 }
