@@ -1,4 +1,11 @@
 ==========
+2020-07-15
+==========
+
+**Internal machinery for the calculation of a cross product :** some factorization has been done.
+
+
+==========
 2020-07-10
 ==========
 

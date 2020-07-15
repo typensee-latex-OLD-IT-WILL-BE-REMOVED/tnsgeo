@@ -22,19 +22,28 @@
 % Lines
 
 \newcommand\gline[3][O]{%
-	\IfStrEqCase{#1}{%
-		{O}{\left(}%
-		{C}{\left[}%
-		{OC}{\left(}%
-		{CO}{\left[}%
-	}%
-	 #2 #3%		
-	\IfStrEqCase{#1}{%
-		{O}{\right)}%
-		{C}{\right]}%
-		{OC}{\right]}%
-		{CO}{\right)}%
-	}%
+    \IfStrEqCase{#1}{%
+        {O}{%
+        	\def\leftdelim {\left(}%
+        	\def\rightdelim{\right)}%
+	    }%
+        {C}{%
+        	\def\leftdelim {\left[}%
+        	\def\rightdelim{\right]}%
+	    }%
+        {OC}{%
+        	\def\leftdelim {\left(}%
+        	\def\rightdelim{\right]}%
+	    }%
+        {CO}{%
+        	\def\leftdelim {\left[}%
+        	\def\rightdelim{\right)}%
+	    }%
+	}[%
+        \PackageError{tnsgeo}{unknown option}%
+                             {you can use O (default) C, OC or CO.}%
+	]
+    \leftdelim{} #2 #3 \rightdelim{}%
 }
 
 \newcommand\pgline[3][O]{%
