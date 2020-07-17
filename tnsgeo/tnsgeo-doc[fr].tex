@@ -171,10 +171,10 @@
 	Le package \texttt{tnsgeo}:\\%
 	pour la géométrie élémentaire\\%
 	{\footnotesize Code source disponible sur \url{https://github.com/typensee-latex/tnsgeo.git}.}\\%
-{\footnotesize Version \texttt{0.0.0-beta} développée et testée sur \macosxname{}.}%
+{\footnotesize Version \texttt{0.1.0-beta} développée et testée sur \macosxname{}.}%
 }
 \author{Christophe BAL}
-\date{2020-07-10}
+\date{2020-07-17}
 
 \maketitle
 
@@ -354,7 +354,14 @@ Ci-dessous l'argument optionnel de \macro{vnorm} vaut \prefix{b} par défaut pou
 
 \subsection{Produit scalaire}
 
-\newparaexample{Version longue}
+Les 1\iers{} exemples utilisent une syntaxe longue mais adaptables à toutes les situations.
+Voir l'exemple \ref{tnsgeo-long-dot-prod} un peu plus bas pour une écriture rapide utilisable dans certains cas.
+
+
+% ---------------------- %
+
+
+\newparaexample{Version classique}
 
 \begin{latexex}
 $\dotprod{\dfrac{1}{2} \vect{u}}%
@@ -365,9 +372,39 @@ $\dotprod{\dfrac{1}{2} \vect{u}}%
 % ---------------------- %
 
 
+\newparaexample{Version \og pédagogique mais pas écolo. \fg}
+
+Dans l'exemple suivant l'option \prefix{b} est pour \whyprefix{b}{ullet} soit \inenglish{puce}.
+Cette écriture peut être utile avec des débutants mais elle utilise beaucoup d'encre.
+
+\begin{latexex}
+$\dotprod[b]{\dfrac{1}{2} \vect{u}}%
+            {\vect{v}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Écriture \og universiatire \fg}
+
+Dans l'exemple suivant l'option \prefix{p} est pour \whyprefix{p}{arenthèse} et dans \prefix{sp} le \prefix{s} est pour \whyprefix{s}{mall} soit \inenglish{petit}. On rencontre souvent cette écriture dans les cursus mathématiques universitaires.
+
+\begin{latexex}
+$\dotprod[p]{\dfrac{1}{2} \vect{u}}%
+            {\vect{v}}$
+
+$\dotprod[sp]{\dfrac{1}{2} \vect{u}}%
+             {\vect{v}}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
 \newparaexample{Écriture \og à la physicienne \fg}
 
-Dans l'exemple suivant, l'option \prefix{r} est pour \whyprefix{r}{after} soit \inenglish{chevron}, et dans \prefix{sr} le \prefix{s} est pour \whyprefix{s}{mall} soit \inenglish{petit}. Les physiciens aiment bien cette notation.
+Dans l'exemple suivant \prefix{r} est pour \whyprefix{r}{after} soit \inenglish{chevron}. Les physiciens aiment bien cette notation.
 
 \begin{latexex}
 $\dotprod[r]{\dfrac{1}{2} \vect{u}}%
@@ -381,15 +418,17 @@ $\dotprod[sr]{\dfrac{1}{2} \vect{u}}%
 % ---------------------- %
 
 
-\newparaexample{Version courtes mais restrictive}
+\newparaexample{Version courte mais restrictive} \label{tnsgeo-long-dot-prod}
 
-Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
+Dans l'exemple suivant le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
+Notons que dans ce cas les options \prefix{sp} et \prefix{sr} n'apportent rien de nouveau.
 
 \begin{latexex}
-$\vdotprod{u}{v}$
+ $\vdotprod   {u}{v}
+= \vdotprod[b]{u}{v}$
  
-$\vdotprod[r] {u}{v}$ comme
-$\vdotprod[sr]{u}{v}$
+ $\vdotprod[r]{u}{v}
+= \vdotprod[p]{u}{v}$
 \end{latexex}
 
 
@@ -415,7 +454,9 @@ $\vdotprod[sr]{u}{v}$
 
 \subsection{Produit vectoriel}
 
-\paragraph{Exemple 1 - Écriture symbolique - Version longue}
+\subsubsection{Écriture symbolique}
+
+\newparaexample{Version classique en France}
 
 \begin{latexex}
 $\crossprod{\dfrac{1}{2} \vect{i}}%
@@ -426,17 +467,33 @@ $\crossprod{\dfrac{1}{2} \vect{i}}%
 % ---------------------- %
 
 
-\paragraph{Exemple 2 - Écriture symbolique - Version courte mais restrictive}
+\newparaexample{Version alternative}
+
+La macro \macro{crossprod} possède un argument optionnel que l'on peut utiliser pour obtenir la mise ne forme suivante.
 
 \begin{latexex}
-$\vcrossprod{i}{j}$
+$\crossprod[t]{\dfrac{1}{2} \vect{i}}%
+              {\vect{j}}$ 
 \end{latexex}
 
 
 % ---------------------- %
 
 
-\paragraph{Exemple 3 - Explication des calculs}
+\newparaexample{Version courte mais restrictive}
+
+\begin{latexex}
+$\vcrossprod   {i}{j}$ ou
+$\vcrossprod[t]{i}{j}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\subsubsection{Les coordonnées}
+
+\newparaexample{Explication du mode de calcul}
 
 Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler} et \prefix{v} pour \whyprefix{v}{ecteur}.
 
@@ -444,8 +501,8 @@ Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler
 $\calccrossprod{\vect{u}}{x }{y }{z }%
                {\vect{v}}{x'}{y'}{z'}
  =
- \vcalccrossprod       {u}{x }{y }{z }%
-                       {v}{x'}{y'}{z'}$
+ \vcalccrossprod{u}{x }{y }{z }%
+                {v}{x'}{y'}{z'}$
 
 $\vcalccrossprod{AB}{x_B - x_A}%
                     {y_B - y_A}%
@@ -480,7 +537,7 @@ $\vcalccrossprod[novec]{u}{x }{y }{z }%
 % ---------------------- %
 
 
-\paragraph{Exemple 4 - Les coordonnées  \og détaillées \fg}
+\newparaexample{Les coordonnées \og développées \fg}
 
 Pour avoir le détail directement dans des coordonnées vous pouvez faire appel à \macro{coordcrossprod} où le préfixe \prefix{coord} fait référence à \whyprefix{coord}{onnée}
 \footnote{
@@ -501,6 +558,8 @@ $\coordcrossprod[sp,c]%
                            {x'}{y'}{z'}$
 \end{latexex}
 
+
+\medskip
 
 Voici les options disponibles. Nous expliquons ensuite comment les utiliser.
 \begin{enumerate}
@@ -532,7 +591,7 @@ La valeur par défaut est \verb+p,s+.
 
 
 \textbf{Attention !}
-Les produits sont produits stupidement. Autrement dit ce sera à vous d'ajouter des parenthèses là où il y en aura besoin sinon vous obtiendrez des horreurs comme celle ci-dessous.
+Les produits sont rédigés stupidement. Autrement dit ce sera à vous d'ajouter des parenthèses là où il y en aura besoin sinon vous obtiendrez des horreurs comme celle ci-dessous.
     
 \begin{latexex}
 $\coordcrossprod[vb]%
@@ -626,9 +685,9 @@ Dans l'exemple suivant, on utilise la valeur \verb+novec+ pour l'argument option
 
 \newparaexample{Calcul développé}
 
-Grâce à l'argument optionnel de \macro{calcdetplane} ou \macro{vcalcdetplane}, il est aussi possible d'obtenir le résultat développé du calcul comme ci-après
+Grâce à l'argument optionnel de \macro{calcdetplane} ou de \macro{vcalcdetplane} il est aussi possible d'obtenir le résultat développé du calcul comme ci-après
 où \prefix{exp} est pour \whyprefix{exp}{and} soit \inenglish{développer}, \prefix{c} pour \macro{cdot} et enfin \prefix{t} pour \macro{times}.
-Même si les vecteurs ne sont pas utilisés pour la mise en forme, on obtient ici une méthode très pratique à l'usage car permettant de faire des copier-coller.
+Même si les vecteurs ne sont pas utilisés pour la mise en forme, on obtient ici une méthode très pratique à l'usage car elle permet de faire des copier-coller.
 
 \begin{latexex}
 $\vcalcdetplane[exp]{u}{x }{y }%
@@ -969,6 +1028,32 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % Changes shown - START
 
     \medskip
+    \item[2020-07-17] Nouvelle version mineure \verb+0.1.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic*{Produit scalaire}
+              trois nouvelles options pour \macro{dotprod} et \macro{vdotprod}.
+        \begin{itemize}[itemsep=.5em]
+            \item \verb+p+ et \verb+sp+ donnent une écriture parenthésée.
+    
+            \item \verb+b+ utilise une puce au lieu d'un point.
+        \end{itemize}
+    
+    
+    	\separation
+    
+    
+        \item \topic*{Produit vectoriel}
+              un nouvel argument optionnel pour \macro{crossprod} et \macro{vcrossprod} afin d'obtenir aussi une mise en forme avec le symbole $\times$ .
+    
+    
+        \separation
+    \end{itemize}
+    
+
+% ------------------------ %
+
+    \medskip
     \item[2020-07-10] Première version \verb+0.0.0-beta+.
 % ------------------------ %
 
@@ -1095,9 +1180,20 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \IDmacro{dotprod}{1}{2}
 
 \IDoption{} la valeur par défaut est \verb+u+ pour \whyprefix{u}{sual} soit \inenglish{habituel}.  Voici les différentes valeurs possibles.
+
 \begin{enumerate}
 	\item \verb+u+ : écriture habituelle avec un point.
 
+	\item \verb+b+ : écriture habituelle mais avec une puce.
+
+	\medskip
+	
+	\item \verb+p+ : écriture \og universitaire \fg{} avec des parenthèses extensibles.
+
+	\item \verb+sp+ : écriture \og universitaire \fg{} avec des parenthèses non extensibles.
+
+	\medskip
+	
 	\item \verb+r+ : écriture \og à la physicienne \fg{} avec des chevrons extensibles.
 
 	\item \verb+sr+ : écriture \og à la physicienne \fg{} avec des chevrons non extensibles.
@@ -1127,7 +1223,16 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \subsubsection{Produit vectoriel}
 
 
-\IDmacro*{crossprod}{2}
+\IDmacro{crossprod}{1}{2}
+
+\IDoption{} la valeur par défaut est \verb+w+ pour \whyprefix{w}{edge} soit \inenglish{coin}. Voici les valeurs possibles.
+
+\begin{enumerate}
+	\item \verb+w+ : écriture classique en France.
+
+	\item \verb+t+ : écriture alternative avec le symbole \macro{times}.
+
+\end{enumerate}
 
 \IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
 
@@ -1137,7 +1242,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{vcrossprod}{2} où \quad \mwhyprefix{v}{ector}
+\IDmacro{vcrossprod}{1}{2} où \quad \mwhyprefix{v}{ector}
+
+\IDoption{} voir les explications précédentes données pour \macro{crossprod}.
 
 \IDarg{1} le nom du 1\ier{} vecteur sans utiliser la macro \macro{vect}.
 
@@ -1192,6 +1299,8 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 	\item \verb+vp+ : écriture verticale avec des parenthèses.
 
+	\medskip
+	
 	\item \verb+b+ : écriture horizontale avec des crochets extensibles.
 
 	\item \verb+sb+ : écriture horizontale avec des crochets non extensibles.
@@ -1208,7 +1317,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 	\item \prefix{c} : \macro{cdot} comme opérateur de multiplication.
 \end{enumerate}
 
-            On peut combiner deux types de choix en les séparant par une virgule comme dans \verb+p,s+ la valeur par défaut.
+            On peut combiner deux types de choix en les séparant par une virgule comme dans \verb+p,s+ la valeur par défaut de l'option.
 
 
 \IDarg{1..3} les coordonnées du 1\ier{} vecteur.

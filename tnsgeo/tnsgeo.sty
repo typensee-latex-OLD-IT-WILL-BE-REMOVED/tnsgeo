@@ -159,7 +159,7 @@
 % -- VECTOR PRODUCTS -- %
 % --------------------- %
 
-% The dot product
+% DOT PRODUCT
 
 %    #1 : 1st delimiter
 %    #2 : 1st vector
@@ -177,6 +177,26 @@
 % Usual
         {u}{%
             #2 \cdot #3%
+        }%
+% Bullet
+        {b}{%
+            #2 \mathbin{\text{\raisebox{.05em}{$\mathsmaller\symvar$}}} #3%
+        }%
+% Big parenthesis
+        {p}{%
+            \tnsgeo@dotprod@abstract@rafter{\left(\,}%
+                                           {#2}
+                                           {\,\left|\,\vphantom{#2}}%
+                                           {#3}%
+                                           {\right.\,\right)}%
+        }%
+% Small parenthesis
+        {sp}{%
+            \tnsgeo@dotprod@abstract@rafter{(\,}%
+                                           {#2}%
+                                           {\mid}%
+                                           {#3}%
+                                           {\,)}%
         }%
 % Big raft
         {r}{%
@@ -196,7 +216,7 @@
         }%
     }[%
         \PackageError{tnsgeo}{unknown option}%
-                             {You can use u (default), r or sr.}%
+                             {You can use u (default), p , sp , r or sr.}%
     ]%
 }
 
@@ -220,15 +240,30 @@
 
 
 
-% The cross product
+% CROSS PRODUCT
 
-\newcommand\crossprod[2]{%
-    #1 \wedge #2%
+%    #1 : option for the operator
+%    #2 : 1st vector
+%    #3 : 2nd vector
+\newcommand\crossprod[3][w]{%
+    #2 %
+    \IfEqCase{#1}{%
+        {w}{\wedge}
+        {t}{\times}
+    }[%
+        \PackageError{tnsgeo}{unknown option}%
+                             {You can use w (default) or t.}%
+    ]%
+    #3
 }
 
-\newcommand\vcrossprod[2]{%
-    \tns@apply@macro@two@args{\crossprod}{\vect}{#1}{#2}%
+%    #1 : option for the operator
+%    #2 : 1st vector
+%    #3 : 2nd vector
+\newcommand\vcrossprod[3][w]{%
+    \crossprod[#1]{\vect{#2}}{\vect{#3}}%
 }
+
 
 
 % Stupid coordinates of the cross product
@@ -259,9 +294,12 @@
 % #9 : one of the the option p, sp, vp, b, sb or vb. 
 \newcommand\tnsgeo@apply@coord@crossprod[9]{%
     #8[#9]{%
-        #2#7#6 - #3#7#5
-      | #3#7#4 - #1#7#6
-      | #1#7#5 - #2#7#4
+    	\tns@prop@prod{#7}{#2}{#5}%
+	                      {#3}{#6}
+      | \tns@prop@prod{#7}{#3}{#6}%
+	                      {#1}{#4}
+      | \tns@prop@prod{#7}{#1}{#4}%
+	                      {#2}{#5}
     }%
 }
 
@@ -357,9 +395,9 @@
     }%
     %
     \tnsgeo@apply@coord@crossprod{#2}{#3}{#4}% Vector 1
-                            {#5}{#6}{#7}% Vector 2
-                            {\@exp@symbol}%
-                            {\coord}{\@coord@option}%
+                                 {#5}{#6}{#7}% Vector 2
+                                 {\@exp@symbol}%
+                                 {\coord}{\@coord@option}%
 }
 
 
@@ -371,9 +409,6 @@
 \newcommand\tnsgeo@calc@crossprod@label[1]{%
     {\tiny$\substack{-\\#1}$}%
 }
-
-
-
 
 
 \newcommand\calccrossprod{\@ifstar{\tnsgeo@calc@crossprod@star}{\tnsgeo@calc@crossprod@no@star}}
@@ -459,11 +494,13 @@
 \newcommand\vcalccrossprod{\@ifstar{\tnsgeo@vcalc@crossprod@star}{\tnsgeo@vcalc@crossprod@no@star}}
 
 \newcommand\tnsgeo@vcalc@crossprod@no@star[9][vec]{%
-    \calccrossprod[#1]{\vect{#2}}{#3}{#4}{#5}{\vect{#6}}{#7}{#8}{#9}%
+    \calccrossprod[#1]{\vect{#2}}{#3}{#4}{#5}%
+                      {\vect{#6}}{#7}{#8}{#9}%
 }
 
 \newcommand\tnsgeo@vcalc@crossprod@star[9][vec]{%
-    \calccrossprod*[#1]{\vect{#2}}{#3}{#4}{#5}{\vect{#6}}{#7}{#8}{#9}%
+    \calccrossprod*[#1]{\vect{#2}}{#3}{#4}{#5}
+                       {\vect{#6}}{#7}{#8}{#9}%
 }
 
 

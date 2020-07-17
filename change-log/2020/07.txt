@@ -1,4 +1,24 @@
 ==========
+2020-07-17
+==========
+
+**New minor version version::``0.1.0-beta`` of ¨tnsgeo:** see the changes below.
+
+
+**Dot product :** ``\dotprod`` et ``\vdotprod`` have the new options.
+
+    1) ``p`` and ``sp`` are for a version using parenthesis.
+
+    1) ``b`` prints a bullet instead of a centered dot.
+
+
+**Cross product :** ``\crossprod`` and ``\vcrossprod`` have now an optional argument suchas to obtain another formating using the symbol ``\times``.
+
+
+**Internal machinery for the calculation of a cross product :** `\tns@prop@prod` is used to make the code easier to read.
+
+
+==========
 2020-07-15
 ==========
 
