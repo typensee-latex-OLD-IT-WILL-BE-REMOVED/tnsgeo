@@ -5,7 +5,7 @@
 \RequirePackage{xstring}
 
 \RequirePackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc, babel}
 
 \RequirePackage{nicematrix}
 \RequirePackage{mathtools}
@@ -279,8 +279,14 @@
     \end{vNiceMatrix}
 }
 
-
+% Source: https://tex.stackexchange.com/a/554468/6880
 \newcommand\tnsgeo@calc@crossprod@no@star[9][vec]{%
+    \makeatletter% Babel TikZ library doesn't help me here but it does in other places.
+        \tnsgeo@calc@crossprod@no@star@aux{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
+    \makeatother%
+}
+
+\newcommand\tnsgeo@calc@crossprod@no@star@aux[9]{%
     \tns@det@plane@open{#1}{&&}{#2}{#6}%
         \tns@det@plane@entries{&&}{#3}{#4}{#7}{#8} \\
         %
