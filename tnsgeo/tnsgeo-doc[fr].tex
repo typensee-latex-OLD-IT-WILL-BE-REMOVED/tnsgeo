@@ -49,6 +49,16 @@
 	listing side text
 }
 
+\newtcbinputlisting{\inputlatexex}[2][]{%
+	listing file={#2},%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing side text
+}
+
+
 \newtcblisting{latexex-flat}{%
 	sharp corners,%
 	left=1mm, right=1mm,%
@@ -56,12 +66,56 @@
 	colupper=red!75!blue,%
 }
 
+\newtcbinputlisting{\inputlatexexflat}[2][]{%
+	listing file={#2},%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+}
+
+
 \newtcblisting{latexex-alone}{%
 	sharp corners,%
 	left=1mm, right=1mm,%
 	bottom=1mm, top=1mm,%
 	colupper=red!75!blue,%
 	listing only
+}
+
+\newtcbinputlisting{\inputlatexexalone}[2][]{%
+	listing file={#2},%
+	sharp corners,%
+	left=1mm, right=1mm,%
+	bottom=1mm, top=1mm,%
+	colupper=red!75!blue,%
+	listing only
+}
+
+
+\newcommand\inputlatexexcodeafter[1]{%
+	\begin{center}
+		\input{#1}
+	\end{center}
+
+	\vspace{-.5em}
+	
+	Le rendu précédent a été obtenu via le code suivant.
+	
+	\inputlatexexalone{#1}
+}
+
+
+\newcommand\inputlatexexcodebefore[1]{%
+	\inputlatexexalone{#1}
+	\vspace{-.75em}
+	\begin{center}
+		\textit{\footnotesize Rendu du code précédent}
+		
+		\medskip
+		
+		\input{#1}
+	\end{center}
 }
 
 
@@ -375,7 +429,7 @@ $\dotprod{\dfrac{1}{2} \vect{u}}%
 \newparaexample{Version \og pédagogique mais pas écolo. \fg}
 
 Dans l'exemple suivant l'option \prefix{b} est pour \whyprefix{b}{ullet} soit \inenglish{puce}.
-Cette écriture peut être utile avec des débutants mais elle utilise beaucoup d'encre.
+Cette écriture peut être utile avec des débutants mais elle est peu pratique pour une écriture manuscrite.
 
 \begin{latexex}
 $\dotprod[b]{\dfrac{1}{2} \vect{u}}%
@@ -386,7 +440,7 @@ $\dotprod[b]{\dfrac{1}{2} \vect{u}}%
 % ---------------------- %
 
 
-\newparaexample{Écriture \og universiatire \fg}
+\newparaexample{Écriture \og universitaire \fg}
 
 Dans l'exemple suivant l'option \prefix{p} est pour \whyprefix{p}{arenthèse} et dans \prefix{sp} le \prefix{s} est pour \whyprefix{s}{mall} soit \inenglish{petit}. On rencontre souvent cette écriture dans les cursus mathématiques universitaires.
 
@@ -469,7 +523,7 @@ $\crossprod{\dfrac{1}{2} \vect{i}}%
 
 \newparaexample{Version alternative}
 
-La macro \macro{crossprod} possède un argument optionnel que l'on peut utiliser pour obtenir la mise ne forme suivante.
+La macro \macro{crossprod} possède un argument optionnel que l'on peut utiliser pour obtenir la mise en forme suivante.
 
 \begin{latexex}
 $\crossprod[t]{\dfrac{1}{2} \vect{i}}%
@@ -1036,7 +1090,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
         \begin{itemize}[itemsep=.5em]
             \item \verb+p+ et \verb+sp+ donnent une écriture parenthésée.
     
-            \item \verb+b+ utilise une puce au lieu d'un point.
+            \item \verb+b+ utilise une puce au lieu d'un point centré verticalement.
         \end{itemize}
     
     
