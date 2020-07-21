@@ -81,9 +81,40 @@ $\vcrossprod[t]{i}{j}$
 % ---------------------- %
 
 
-\subsubsection{Les coordonnées}
+\subsection{Fiche technique}
 
-\newparaexample{Explication du mode de calcul}
+\IDmacro{crossprod}{1}{2}
+
+\IDoption{} la valeur par défaut est \verb+w+ pour \whyprefix{w}{edge} soit \inenglish{coin}. Voici les valeurs possibles.
+
+\begin{enumerate}
+	\item \verb+w+ : écriture classique en France.
+
+	\item \verb+t+ : écriture alternative avec le symbole \macro{times}.
+
+\end{enumerate}
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+
+\separation
+
+
+\IDmacro{vcrossprod}{1}{2} où \quad \mwhyprefix{v}{ector}
+
+\IDoption{} voir les explications précédentes données pour \macro{crossprod}.
+
+\IDarg{1} le nom du 1\ier{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2} le nom du 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+
+
+% ---------------------- %
+
+
+\subsubsection{Explication du mode de calcul}
 
 Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler} et \prefix{v} pour \whyprefix{v}{ecteur}.
 
@@ -126,6 +157,43 @@ $\vcalccrossprod[novec]{u}{x }{y }{z }%
 
 % ---------------------- %
 
+
+\subsubsection{Fiche technique}
+
+\IDmacro*{calccrossprod }{8}  où \quad \mwhyprefix{calc}{ulate}
+
+\IDmacro*{calccrossprod*}{8}  où \quad \mwhyprefix{calc}{ulate}
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{5} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
+
+
+\separation
+
+
+\IDmacro*{vcalccrossprod }{8}  où \quad \mwhyprefix{calc}{ulate}
+                                    et \mwhyprefix{v}{ector}
+
+\IDmacro*{vcalccrossprod*}{8}  où \quad \mwhyprefix{calc}{ulate}
+                                    et \mwhyprefix{v}{ector}
+
+\IDarg{1} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{5} le 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
+
+
+% ---------------------- %
+
+\subsubsection{Les coordonnées}
 
 \newparaexample{Les coordonnées \og développées \fg}
 
@@ -204,82 +272,14 @@ $\coordcrossprod[vb]%
 % ---------------------- %
 
 
-\subsection{Fiche technique}
-
-\paragraph{Produit vectoriel}
-
-
-\IDmacro{crossprod}{1}{2}
-
-\IDoption{} la valeur par défaut est \verb+w+ pour \whyprefix{w}{edge} soit \inenglish{coin}. Voici les valeurs possibles.
-
-\begin{enumerate}
-	\item \verb+w+ : écriture classique en France.
-
-	\item \verb+t+ : écriture alternative avec le symbole \macro{times}.
-
-\end{enumerate}
-
-\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
-
-\IDarg{2} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
-
-
-\separation
-
-
-\IDmacro{vcrossprod}{1}{2} où \quad \mwhyprefix{v}{ector}
-
-\IDoption{} voir les explications précédentes données pour \macro{crossprod}.
-
-\IDarg{1} le nom du 1\ier{} vecteur sans utiliser la macro \macro{vect}.
-
-\IDarg{2} le nom du 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
-
-
-\separation
-
-
-\IDmacro*{calccrossprod}{8}  où \quad \mwhyprefix{calc}{ulate}
-
-\IDmacro*{calccrossprod*}{8}  où \quad \mwhyprefix{calc}{ulate}
-
-\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
-
-\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
-
-\IDarg{5} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
-
-\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
-
-
-\separation
-
-
-\IDmacro*{vcalccrossprod}{8}  où \quad \mwhyprefix{calc}{ulate}
-                                    et \mwhyprefix{v}{ector}
-
-\IDmacro*{vcalccrossprod*}{8}  où \quad \mwhyprefix{calc}{ulate}
-                                    et \mwhyprefix{v}{ector}
-
-\IDarg{1} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
-
-\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
-
-\IDarg{5} le 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
-
-\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
-
-
-\separation
-
+\subsubsection{Fiche technique}
 
 \IDmacro{coordcrossprod}{1}{6}  où \quad \mwhyprefix{coord}{inate}
 
 \IDoption{} la valeur par défaut est \verb+p,s+. 
             Voici les différentes valeurs possibles pour la mise en forme des coordonnées uniquement \emph{(voir la section \ref{tnsgeo-coordinates-tech} page \pageref{tnsgeo-coordinates-tech})}.
 \begin{enumerate}
-	\item \verb+p+ : écriture horizontale avec des parenthèses extensibles.
+	\item \verb+p + : écriture horizontale avec des parenthèses extensibles.
 
 	\item \verb+sp+ : écriture horizontale avec des parenthèses non extensibles.
 
@@ -287,7 +287,7 @@ $\coordcrossprod[vb]%
 
 	\medskip
 	
-	\item \verb+b+ : écriture horizontale avec des crochets extensibles.
+	\item \verb+b + : écriture horizontale avec des crochets extensibles.
 
 	\item \verb+sb+ : écriture horizontale avec des crochets non extensibles.
 

@@ -9,6 +9,8 @@
 This has been fixed.
 
 
+**Internal machinery for the technical ¨infos:** the builder is better but stil not the best...
+
 
 ==========
 2020-07-17
