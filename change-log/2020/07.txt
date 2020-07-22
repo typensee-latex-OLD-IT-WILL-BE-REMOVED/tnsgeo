@@ -1,16 +1,22 @@
 ==========
+2020-07-22 ???????
+==========
+
+**Internal machinery for the technical ¨infos:** the builder should be merly the best one in the world. :-)
+
+
+==========
 2020-07-21
 ==========
 
 **New sub minor version version::``0.1.1-beta`` of ¨tnsgeo:** there was a problem due to the use of the ¨tikz library ``babel``
 ((
-    This bug was discovered when trying to integrate ¨tnsgeo into ¨tnsmath
+    This bug was discovered when trying to integrate ¨tnsgeo into ¨tnsmath.
 )).
 This has been fixed.
 
 
-**Internal machinery for the technical ¨infos:** the builder is better but stil not the best...
-
+**Internal machinery for the technical ¨infos:** the builder is better but still not the best one...
 
 ==========
 2020-07-17
