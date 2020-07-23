@@ -1,8 +1,8 @@
 ==========
-2020-07-22 ???????
+2020-07-23
 ==========
 
-**Internal machinery for the technical ¨infos:** the builder should be merly the best one in the world. :-)
+**Internal machinery for the technical ¨infos:** the printing uses now ¨macroenvsign the new version of ¨cbdevtools (this tool is still in alpha version).
 
 
 ==========

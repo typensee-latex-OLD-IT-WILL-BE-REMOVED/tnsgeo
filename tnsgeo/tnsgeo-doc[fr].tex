@@ -558,10 +558,10 @@ $\vcrossprod[t]{i}{j}$
 Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler} et \prefix{v} pour \whyprefix{v}{ecteur}.
 
 \begin{latexex}
-$\calccrossprod{\vect{u}}{x }{y }{z }%
+$\calccrossprod{\vect{u}}{x}{y}{z}%
                {\vect{v}}{x'}{y'}{z'}
  =
- \vcalccrossprod{u}{x }{y }{z }%
+ \vcalccrossprod{u}{x}{y}{z}%
                 {v}{x'}{y'}{z'}$
 
 $\vcalccrossprod{AB}{x_B - x_A}%
@@ -576,7 +576,7 @@ $\vcalccrossprod{AB}{x_B - x_A}%
 Avec un public averti on peut juste proposer les coordonnées sans les décorations comme ci-après via la version étoilée de \macro{vcalccrossprod} mais ceci fonctionne aussi avec \macro{calccrossprod}.
 
 \begin{latexex}
-$\vcalccrossprod*{u}{x }{y }{z }%
+$\vcalccrossprod*{u}{x}{y}{z}%
                  {v}{x'}{y'}{z'}$
 \end{latexex}
 
@@ -586,10 +586,10 @@ Ceci fonctionne aussi pour la macro \macro{calccrossprod}.
 Il peut sembler un peu lourd d'avoir des arguments pour des vecteurs non affichés mais ce choix permet à l'usage de faire des copier-coller redoutables d'efficacité !
 
 \begin{latexex}
-$\vcalccrossprod[novec]{u}{x }{y }{z }%
+$\vcalccrossprod[novec]{u}{x}{y}{z}%
                        {v}{x'}{y'}{z'}
  =
- \vcalccrossprod*[novec]{u}{x }{y }{z }%
+ \vcalccrossprod*[novec]{u}{x}{y}{z}%
                         {v}{x'}{y'}{z'}$
 \end{latexex}
 
@@ -608,15 +608,15 @@ Pour avoir le détail directement dans des coordonnées vous pouvez faire appel 
 On peut utiliser des options pour choisir certains paramètres de mise en forme.
 
 \begin{latexex}
-$\coordcrossprod{\dfrac{1}{2}x}{y }{z }%
+$\coordcrossprod{\dfrac{1}{2}x}{y}{z}%
                            {x'}{y'}{z'}$
 
 $\coordcrossprod[vb]%
-                {\dfrac{1}{2}x}{y }{z }%
+                {\dfrac{1}{2}x}{y}{z}%
                            {x'}{y'}{z'}$
 
 $\coordcrossprod[sp,c]%
-                {\dfrac{1}{2}x}{y }{z }%
+                {\dfrac{1}{2}x}{y}{z}%
                            {x'}{y'}{z'}$
 \end{latexex}
 
@@ -683,7 +683,7 @@ $\coordcrossprod[vb]%
 Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler}.
 
 \begin{latexex}
-$\calcdetplane{\vect{u}}{x }{y }%
+$\calcdetplane{\vect{u}}{x}{y}%
               {\vect{v}}{x'}{y'}$
 ou
 $\calcdetplane{\vect{AB}}%
@@ -699,7 +699,7 @@ $\calcdetplane{\vect{AB}}%
 \newparaexample{Version non décorée}
 
 \begin{latexex}
-$\calcdetplane*{\vect{u}}{x }{y }%
+$\calcdetplane*{\vect{u}}{x}{y}%
                {\vect{v}}{x'}{y'}$
 \end{latexex}
 
@@ -712,10 +712,10 @@ $\calcdetplane*{\vect{u}}{x }{y }%
 Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
 
 \begin{latexex}
-$\vcalcdetplane{u}{x }{y }%
+$\vcalcdetplane{u}{x}{y}%
                {v}{x'}{y'}
  =
- \vcalcdetplane*{u}{x }{y }%
+ \vcalcdetplane*{u}{x}{y}%
                 {v}{x'}{y'}$
 \end{latexex}
 
@@ -730,9 +730,9 @@ Dans l'exemple suivant, on utilise la valeur \verb+novec+ pour l'argument option
 
 
 \begin{latexex}
- $\vcalcdetplane[novec] {u}{x }{y }%
+ $\vcalcdetplane[novec] {u}{x}{y}%
                         {v}{x'}{y'}
-= \vcalcdetplane*[novec]{u}{x }{y }%
+= \vcalcdetplane*[novec]{u}{x}{y}%
                         {v}{x'}{y'}$
 \end{latexex}
 
@@ -752,13 +752,13 @@ où \prefix{exp} est pour \whyprefix{exp}{and} soit \inenglish{développer}, \pr
 Même si les vecteurs ne sont pas utilisés pour la mise en forme, on obtient ici une méthode très pratique à l'usage car elle permet de faire des copier-coller.
 
 \begin{latexex}
-$\vcalcdetplane[exp]{u}{x }{y }%
+$\vcalcdetplane[exp]{u}{x}{y}%
                     {v}{x'}{y'}$
 
-$\vcalcdetplane[cexp]{u}{x }{y }%
+$\vcalcdetplane[cexp]{u}{x}{y}%
                      {v}{x'}{y'}$
 
-$\vcalcdetplane[texp]{u}{x }{y }%
+$\vcalcdetplane[texp]{u}{x}{y}%
                      {v}{x'}{y'}$
 \end{latexex}
 
@@ -1155,9 +1155,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro{gline }{1}{2}   \hfill \mwhyprefix{g}{eometry}
+\IDmacro[1]{gline}{1}{2}   \hfill \mwhyprefix{g}{eometry}
 
-\IDmacro{pgline}{1}{2}  \hfill \mwhyprefix{p}{oint}
+\IDmacro   {pgline}{1}{2}  \hfill \mwhyprefix{p}{oint}
                               et \mwhyprefix{g}{eometry}
 
 \IDoption{} pour indiquer les parenthèses ou crochets à utiliser, les valeurs possibles étant \prefix{O}, valeur par défaut, \prefix{C}, \prefix{CO} et \prefix{OC}.
@@ -1170,16 +1170,16 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{hgline  }{2}   \hfill \mwhyprefix{h}{alf}
+\IDmacro*[2]{hgline}{2}   \hfill \mwhyprefix{h}{alf}
                              et \mwhyprefix{g}{eometry}
 
-\IDmacro*{phgline }{2}  \hfill \prefix{phg = p + h + g}
+\IDmacro*[1]{phgline}{2}  \hfill \prefix{phg = p + h + g}
 
 \extraspace
 
-\IDmacro*{segment }{2}
+\IDmacro*[1]{segment}{2}
 
-\IDmacro*{psegment}{2}  \hfill \mwhyprefix{p}{oint}
+\IDmacro*   {psegment}{2}  \hfill \mwhyprefix{p}{oint}
 
 \IDarg{1} le 1\ier{} point géométrique.
 
@@ -1339,9 +1339,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*{calccrossprod }{8}  \hfill \mwhyprefix{calc}{ulate}
+\IDmacro*[1]{calccrossprod}{8}  \hfill \mwhyprefix{calc}{ulate}
 
-\IDmacro*{calccrossprod*}{8}  \hfill \mwhyprefix{calc}{ulate}
+\IDmacro*   {calccrossprod*}{8} \hfill \mwhyprefix{calc}{ulate}
 
 \IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
 
@@ -1355,11 +1355,11 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{vcalccrossprod }{8}  \hfill \mwhyprefix{calc}{ulate}
-                                    et \mwhyprefix{v}{ector}
+\IDmacro*[1]{vcalccrossprod}{8}  \hfill \mwhyprefix{calc}{ulate}
+                                     et \mwhyprefix{v}{ector}
 
-\IDmacro*{vcalccrossprod*}{8}  \hfill \mwhyprefix{calc}{ulate}
-                                    et \mwhyprefix{v}{ector}
+\IDmacro*   {vcalccrossprod*}{8} \hfill \mwhyprefix{calc}{ulate}
+                                     et \mwhyprefix{v}{ector}
 
 \IDarg{1} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
 
@@ -1417,9 +1417,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro{calcdetplane }{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[1]{calcdetplane}{1}{6} \hfill \mwhyprefix{calc}{ulate}
 
-\IDmacro{calcdetplane*}{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro   {calcdetplane*}{1}{6} \hfill \mwhyprefix{calc}{ulate}
 
 
 \IDoption{} la valeur par défaut est \verb+vec+. Voici les différentes valeurs possibles.
@@ -1452,10 +1452,10 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro{vcalcdetplane }{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[1]{vcalcdetplane}{1}{6} \hfill \mwhyprefix{calc}{ulate}
                                    et \mwhyprefix{v}{ector}
 
-\IDmacro{vcalcdetplane*}{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro   {vcalcdetplane*}{1}{6} \hfill \mwhyprefix{calc}{ulate}
                                    et \mwhyprefix{v}{ector}
 
 
@@ -1546,9 +1546,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*{axes }{1}
+\IDmacro*[1]{axes}{1}
 
-\IDmacro*{axes*}{1}
+\IDmacro*   {axes*}{1}
 
 \IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
 
@@ -1587,7 +1587,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \separation
 
-\IDmacro*{pvaxes}{3} \hfill \prefix{pv = p + v}
+\IDmacro*{pvaxes}{1} \hfill \prefix{pv = p + v}
 
 \IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
 
