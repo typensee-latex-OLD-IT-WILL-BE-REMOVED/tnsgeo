@@ -1133,7 +1133,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*{pt}{1}
+\IDmacro[a]{pt}{1}
 
 \IDarg{} un texte donnant le nom d'un point.
 
@@ -1141,7 +1141,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{pt*}{2}
+\IDmacro[a]{pt*}{2}
 
 \IDarg{1} un texte indiquant $\pt{UP}$ dans le nom $\pt*{UP}{down}$ d'un point.
 
@@ -1155,10 +1155,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro[1]{gline}{1}{2}   \hfill \mwhyprefix{g}{eometry}
+\IDmacro{gline }{1}{2}  \hfill \mwhyprefix{g}{eometry}
 
-\IDmacro   {pgline}{1}{2}  \hfill \mwhyprefix{p}{oint}
-                              et \mwhyprefix{g}{eometry}
+\IDmacro{pgline}{1}{2}  \hfill \mwhyprefix{p}{oint}
 
 \IDoption{} pour indiquer les parenthèses ou crochets à utiliser, les valeurs possibles étant \prefix{O}, valeur par défaut, \prefix{C}, \prefix{CO} et \prefix{OC}.
 
@@ -1170,16 +1169,15 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*[2]{hgline}{2}   \hfill \mwhyprefix{h}{alf}
-                             et \mwhyprefix{g}{eometry}
+\IDmacro[a]{hgline  }{2}  \hfill \mwhyprefix{h}{alf}
 
-\IDmacro*[1]{phgline}{2}  \hfill \prefix{phg = p + h + g}
+\IDmacro[a]{phgline }{2}  \hfill \prefix{phg = p + h + g}
 
 \extraspace
 
-\IDmacro*[1]{segment}{2}
+\IDmacro[a]{segment }{2}
 
-\IDmacro*   {psegment}{2}  \hfill \mwhyprefix{p}{oint}
+\IDmacro[a]{psegment}{2}
 
 \IDarg{1} le 1\ier{} point géométrique.
 
@@ -1210,7 +1208,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*{vect}{1}
+\IDmacro[a]{vect}{1}
 
 \IDarg{} un texte donnant le nom d'un vecteur.
 
@@ -1218,7 +1216,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{vect*}{2}
+\IDmacro[a]{vect*}{2}
 
 \IDarg{1} un texte indiquant $up$ dans le nom $\vect*{up}{down}$ d'un vecteur.
 
@@ -1244,7 +1242,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \separation
 
-\IDmacro*{vnorm}{1} \hfill \mwhyprefix{v}{ector}
+\IDmacro[a]{vnorm}{1} \hfill \mwhyprefix{v}{ector}
 
 \IDarg{} le nom du vecteur sur lequel appliquer la norme.
 
@@ -1339,9 +1337,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*[1]{calccrossprod}{8}  \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[a]{calccrossprod }{8}  \hfill \mwhyprefix{calc}{ulate}
 
-\IDmacro*   {calccrossprod*}{8} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[a]{calccrossprod*}{8}
 
 \IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
 
@@ -1355,11 +1353,10 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*[1]{vcalccrossprod}{8}  \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[a]{vcalccrossprod }{8}  \hfill \mwhyprefix{calc}{ulate}
                                      et \mwhyprefix{v}{ector}
 
-\IDmacro*   {vcalccrossprod*}{8} \hfill \mwhyprefix{calc}{ulate}
-                                     et \mwhyprefix{v}{ector}
+\IDmacro[a]{vcalccrossprod*}{8}
 
 \IDarg{1} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
 
@@ -1417,9 +1414,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro[1]{calcdetplane}{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro{calcdetplane }{1}{6} \hfill \mwhyprefix{calc}{ulate}
 
-\IDmacro   {calcdetplane*}{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro{calcdetplane*}{1}{6}
 
 
 \IDoption{} la valeur par défaut est \verb+vec+. Voici les différentes valeurs possibles.
@@ -1452,11 +1449,10 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro[1]{vcalcdetplane}{1}{6} \hfill \mwhyprefix{calc}{ulate}
+\IDmacro{vcalcdetplane }{1}{6} \hfill \mwhyprefix{calc}{ulate}
                                    et \mwhyprefix{v}{ector}
 
-\IDmacro   {vcalcdetplane*}{1}{6} \hfill \mwhyprefix{calc}{ulate}
-                                   et \mwhyprefix{v}{ector}
+\IDmacro{vcalcdetplane*}{1}{6}
 
 
 \IDoption{} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
@@ -1497,7 +1493,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro{pcoord}{1}{2} \hfill \mwhyprefix{p}{oint}
+\IDmacro{pcoord}{1}{2}  \hfill \mwhyprefix{p}{oint}
 
 \IDoption{} voir les indications données pour la macro \macro{coord}.
 
@@ -1509,7 +1505,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro{pcoord*}{1}{2} \hfill \mwhyprefix{p}{oint}
+\IDmacro{pcoord*}{1}{2}
 
 \IDoption{} voir les indications données pour la macro \macro{coord}.
 
@@ -1533,7 +1529,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro{vcoord*}{1}{2} \hfill \mwhyprefix{v}{ertical}
+\IDmacro{vcoord*}{1}{2}
 
 \IDoption{} voir les indications données pour la macro \macro{coord}.
 
@@ -1546,9 +1542,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*[1]{axes}{1}
+\IDmacro[a]{axes }{1}
 
-\IDmacro*   {axes*}{1}
+\IDmacro[a]{axes*}{1}
 
 \IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
 
@@ -1561,7 +1557,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \separation
 
-\IDmacro*{paxes}{1} \hfill \mwhyprefix{p}{oint}
+\IDmacro{paxes}{1} \hfill \mwhyprefix{p}{oint}
 
 \IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
 
@@ -1574,7 +1570,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \separation
 
-\IDmacro*{vaxes}{1} \hfill \mwhyprefix{v}{ector}
+\IDmacro{vaxes}{1} \hfill \mwhyprefix{v}{ector}
 
 \IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
 
@@ -1587,7 +1583,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \separation
 
-\IDmacro*{pvaxes}{1} \hfill \prefix{pv = p + v}
+\IDmacro{pvaxes}{1} \hfill \prefix{pv = p + v}
 
 \IDarg{} l'argument est une suite de "morceaux" séparés par des barres \verb+|+.
 
@@ -1602,7 +1598,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*{circarc}{1} \hfill \mwhyprefix{circ}{ular}
+\IDmacro[a]{circarc}{1} \hfill \mwhyprefix{circ}{ular}
 
 \IDarg{} un texte donnant le nom d'un arc circulaire.
 
@@ -1610,7 +1606,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{circarc*}{2} \hfill \mwhyprefix{circ}{ular}
+\IDmacro[a]{circarc*}{2}
 
 \IDarg{1} un texte indiquant $up$ dans le nom $\circarc*{up}{down}$ d'un arc circulaire.
 
@@ -1623,7 +1619,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro*{anglein}{1} \hfill \mwhyprefix{in}{terior}
+\IDmacro[a]{anglein}{1}  \hfill \mwhyprefix{in}{terior}
 
 \IDarg{} un texte donnant le nom d'un angle intérieur.
 
@@ -1631,7 +1627,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \separation
 
 
-\IDmacro*{anglein*}{2} \hfill \mwhyprefix{in}{terior}
+\IDmacro[a]{anglein*}{2}
 
 \IDarg{1} un texte indiquant $up$ dans le nom $\anglein*{up}{down}$ d'un angle intérieur.
 
