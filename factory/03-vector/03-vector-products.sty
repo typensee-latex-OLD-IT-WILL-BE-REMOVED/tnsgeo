@@ -4,10 +4,6 @@
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
 
-\RequirePackage{tikz}
-\usetikzlibrary{calc, babel}
-
-\RequirePackage{nicematrix}
 \RequirePackage{mathtools}
 
 \RequirePackage{tnscom}
@@ -269,99 +265,57 @@
 
 \newcommand\calccrossprod{\@ifstar{\tnsgeo@calc@crossprod@star}{\tnsgeo@calc@crossprod@no@star}}
 
+\newcommand\tnsgeo@calc@crossprod@star{\@ifstar{\tnsgeo@calc@crossprod@star@star}{\tnsgeo@calc@crossprod@star@no@star}}
 
-\newcommand\tnsgeo@calc@crossprod@star[9][vec]{%
-    \tns@det@plane@open{#1}{&}{#2}{#6}%
-        \tns@det@plane@entries{&}{#3}{#4}{#7}{#8} \\
-        %
-        #5                & #9                    \\
-        {\color{blue} #3} & {\color{blue} #7}
-    \end{vNiceMatrix}
-}
 
-% Source: https://tex.stackexchange.com/a/554468/6880
+%   #1 : vector or not
+%
+%   #2  #6        u  v
+%   
+%   #3  #7        x  x'
+%   #4  #8        y  y'
+%   #5  #9        z  z'
+
 \newcommand\tnsgeo@calc@crossprod@no@star[9][vec]{%
-    \makeatletter% Babel TikZ library doesn't help me here but it does in other places.
-        \tnsgeo@calc@crossprod@no@star@aux{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}%
-    \makeatother%
+    \tns@cross@prod@deco@loop{#1}%
+                             {#2}{#3}{#4}{#5}%
+                             {#6}{#7}{#8}{#9}%
 }
 
-\newcommand\tnsgeo@calc@crossprod@no@star@aux[9]{%
-    \tns@det@plane@open{#1}{&&}{#2}{#6}%
-        \tns@det@plane@entries{&&}{#3}{#4}{#7}{#8} \\
-        %
-        #5                && #9                    \\
-        {\color{blue} #3} && {\color{blue} #7}
-        %%
-        \CodeAfter
-        \begin{tikzpicture}
-            \path (2-1.east) 
-                  -- node[below = 0.3em,
-                          blue,
-                          circle,
-                          inner sep = .4pt]
-                     (minusone) {\tnsgeo@calc@crossprod@label{1}}
-                  (2-3.west);
-            \draw [blue,->]
-                  let \p1 = ($(minusone.east) - (minusone.center)$) in 
-                      ([xshift = 0.5mm,yshift=-0.05mm]2-1.east)
-                      to[out = 0, in = 137.5]
-                      ([yshift=-0.05mm]minusone.50)
-                      arc[start angle = 50,
-                          end angle = -230,
-                          radius = \x1] 
-                      to[out = 42.5, in =190]
-                      ([xshift = -0.3mm,yshift=-0.05mm]2-1.east-|2-3.west);
-            %%
-            \path (3-1.east) 
-                  -- node[below = 0.3em,
-                          red,
-                          circle,
-                          inner sep = .4pt] 
-                     (minustwo) {\tnsgeo@calc@crossprod@label{2}}
-                  (3-3.west);
-            \draw [red,->]
-                  let \p1 = ($(minustwo.east) - (minustwo.center)$) in 
-                      ([xshift=0.5mm,yshift=-0.6mm]3-1.east)
-                      to[out = 0, in = 137.5]
-                      ([yshift=-0.6mm]minustwo.50)
-                      arc[start angle = 50,
-                          end angle = -230,
-                          radius = \x1] 
-                      to[out = 42.5, in =190] 
-                      ([xshift = -0.3mm,yshift=-0.6mm]3-1.east-|3-3.west);
-            %%
-            \path (1-1.east) 
-                  -- node[below = 0.3em,
-                          orange,
-                          circle,
-                          inner sep = .4pt] 
-                     (minus) {\tnsgeo@calc@crossprod@label{3}}
-                  (1-3.west);
-            \draw [orange,->]
-                  let \p1 = ($(minus.east) - (minus.center)$) in 
-                      ([xshift=0.5mm]1-1.east)
-                      to[out = 0, in = 137.5]
-                      (minus.50)
-                      arc[start angle = 50,
-                          end angle = -230,
-                          radius = \x1] 
-                      to[out = 42.5, in =190] 
-                      ([xshift=-0.3mm]1-1.east-|1-3.west);
-        \end{tikzpicture} 
-    \end{vNiceMatrix}
+
+\newcommand\tnsgeo@calc@crossprod@star@no@star[9][vec]{%
+    \tns@cross@prod@deco@cross{#1}%
+                              {#2}{#3}{#4}{#5}%
+                              {#6}{#7}{#8}{#9}%
+}
+
+
+\newcommand\tnsgeo@calc@crossprod@star@star[9][vec]{%
+    \tns@cross@prod@no@deco{#1}%
+                           {#2}{#3}{#4}{#5}%
+                           {#6}{#7}{#8}{#9}%
 }
 
 
 \newcommand\vcalccrossprod{\@ifstar{\tnsgeo@vcalc@crossprod@star}{\tnsgeo@vcalc@crossprod@no@star}}
+
+\newcommand\tnsgeo@vcalc@crossprod@star{\@ifstar{\tnsgeo@vcalc@crossprod@star@star}{\tnsgeo@vcalc@crossprod@star@no@star}}
+
 
 \newcommand\tnsgeo@vcalc@crossprod@no@star[9][vec]{%
     \calccrossprod[#1]{\vect{#2}}{#3}{#4}{#5}%
                       {\vect{#6}}{#7}{#8}{#9}%
 }
 
-\newcommand\tnsgeo@vcalc@crossprod@star[9][vec]{%
+
+\newcommand\tnsgeo@vcalc@crossprod@star@no@star[9][vec]{%
     \calccrossprod*[#1]{\vect{#2}}{#3}{#4}{#5}
                        {\vect{#6}}{#7}{#8}{#9}%
+}
+
+
+\newcommand\tnsgeo@vcalc@crossprod@star@star[9][vec]{%
+    \calccrossprod**[#1]{\vect{#2}}{#3}{#4}{#5}
+                        {\vect{#6}}{#7}{#8}{#9}%
 }
 

@@ -21,14 +21,14 @@
     \newcommand\@no@point[1]{%
         \IfStrEq{#1}{i}{%
             \imath%
-        }{%
+      }{%
             \IfStrEq{#1}{j}{%
                 \jmath%
-            }{%
+          }{%
                 #1
-            }%
-        }%
-    }
+          }%
+      }%
+  }
 
     \newcommand\vect{\@ifstar{\@vect@star}{\@vect@no@star}}
     \newcommand*\@vect@star[1]{\vv*{\@no@point{#1}}}
@@ -48,7 +48,7 @@
 Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler}.
 
 \begin{latexex}
-$\calcdetplane{\vect{u}}{x }{y }%
+$\calcdetplane{\vect{u}}{x}{y}%
               {\vect{v}}{x'}{y'}$
 ou
 $\calcdetplane{\vect{AB}}%
@@ -64,7 +64,7 @@ $\calcdetplane{\vect{AB}}%
 \newparaexample{Version non décorée}
 
 \begin{latexex}
-$\calcdetplane*{\vect{u}}{x }{y }%
+$\calcdetplane*{\vect{u}}{x}{y}%
                {\vect{v}}{x'}{y'}$
 \end{latexex}
 
@@ -74,13 +74,11 @@ $\calcdetplane*{\vect{u}}{x }{y }%
 
 \newparaexample{Rédaction raccourcie pour les vecteurs}
 
-Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
-
 \begin{latexex}
-$\vcalcdetplane{u}{x }{y }%
+$\vcalcdetplane{u}{x}{y}%
                {v}{x'}{y'}
  =
- \vcalcdetplane*{u}{x }{y }%
+ \vcalcdetplane*{u}{x}{y}%
                 {v}{x'}{y'}$
 \end{latexex}
 
@@ -90,14 +88,10 @@ $\vcalcdetplane{u}{x }{y }%
 
 \newparaexample{Versions sans les vecteurs}
 
-Dans l'exemple suivant, on utilise la valeur \verb+novec+ pour l'argument optionnel de \macro{vcalcdetplane} qui par défaut est \verb+vec+ pour pour \whyprefix{vec}{teur}.
-À l'usage ceci permet des copier-coller très efficaces !
-
-
 \begin{latexex}
- $\vcalcdetplane[novec] {u}{x }{y }%
+ $\vcalcdetplane[novec] {u}{x}{y}%
                         {v}{x'}{y'}
-= \vcalcdetplane*[novec]{u}{x }{y }%
+= \vcalcdetplane*[novec]{u}{x}{y}%
                         {v}{x'}{y'}$
 \end{latexex}
 
@@ -117,13 +111,13 @@ où \prefix{exp} est pour \whyprefix{exp}{and} soit \inenglish{développer}, \pr
 Même si les vecteurs ne sont pas utilisés pour la mise en forme, on obtient ici une méthode très pratique à l'usage car elle permet de faire des copier-coller.
 
 \begin{latexex}
-$\vcalcdetplane[exp]{u}{x }{y }%
+$\vcalcdetplane[exp]{u}{x}{y}%
                     {v}{x'}{y'}$
 
-$\vcalcdetplane[cexp]{u}{x }{y }%
+$\vcalcdetplane[cexp]{u}{x}{y}%
                      {v}{x'}{y'}$
 
-$\vcalcdetplane[texp]{u}{x }{y }%
+$\vcalcdetplane[texp]{u}{x}{y}%
                      {v}{x'}{y'}$
 \end{latexex}
 
@@ -145,7 +139,7 @@ $\vcalcdetplane[exp]{AB}%
                     {y_D - y_C}$
 \end{latexex}
 
-Ici nous n'avons pas d'autre choix que de régler le problème à la amin. Ce genre de situation n'est pas rare dans la vraie vie mathématique.
+Ici nous n'avons pas d'autre choix que de régler le problème à la main. Ce genre de situation n'est pas rare dans la vraie vie mathématique.
     
 \begin{latexex}
 $\vcalcdetplane[exp]{AB}%
@@ -162,9 +156,9 @@ $\vcalcdetplane[exp]{AB}%
 
 \subsection{Fiche technique}
 
-\IDmacro{calcdetplane }{1}{6} où \quad \mwhyprefix{calc}{ulate}
+\IDmacro{calcdetplane }{1}{6} \hfill \mwhyprefix{calc}{ulate}
 
-\IDmacro{calcdetplane*}{1}{6} où \quad \mwhyprefix{calc}{ulate}
+\IDmacro{calcdetplane*}{1}{6}
 
 
 \IDoption{} la valeur par défaut est \verb+vec+. Voici les différentes valeurs possibles.
@@ -183,29 +177,24 @@ $\vcalcdetplane[exp]{AB}%
 
 \IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
 
-\IDarg{2} la 1\iere{} coordonnée du 1\ier{} vecteur.
-
-\IDarg{3} la 2\ieme{} coordonnée du 1\ier{} vecteur.
+\IDargs{2..3} les coordonnées du 1\ier{} vecteur.
 
 \IDarg{4} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
 
-\IDarg{5} la 1\iere{} coordonnée du 2\ieme{} vecteur.
-
-\IDarg{6} la 2\ieme{} coordonnée du 2\ieme{} vecteur.
+\IDargs{5..6} les coordonnées du 2\ieme{} vecteur.
 
 
 \separation
 
 
-\IDmacro{vcalcdetplane }{1}{6} où \quad \mwhyprefix{calc}{ulate}
-                                     et \mwhyprefix{v}{ector}
+\IDmacro{vcalcdetplane }{1}{6} \hfill \mwhyprefix{calc}{ulate}
+                                   et \mwhyprefix{v}{ector}
 
-\IDmacro{vcalcdetplane*}{1}{6} où \quad \mwhyprefix{calc}{ulate}
-                                     et \mwhyprefix{v}{ector}
+\IDmacro{vcalcdetplane*}{1}{6}
 
 
 \IDoption{} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
 
-\IDarg{1..6} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
+\IDargs{1..6} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
 
 \end{document}
