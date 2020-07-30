@@ -1,4 +1,38 @@
 ==========
+2020-07-30
+==========
+
+**New minor version version::``0.2.0-beta`` of ¨tnsgeo:** see the changes below.
+
+
+**Criteria of colinearity:** a new macro ``\colicriteria`` shows crossing products instead of the loops used for the 2D determinant of two vectors in a plane.
+
+
+**New ¨api for the cross products:** there is one little important change and a new feature.
+
+    1) ``\vcalccrossprod*`` becomes ``\vcalccrossprod**``.
+
+    1) ``\vcalccrossprod*`` prints crossing products instead of loops.
+
+
+**Documentation:** examples of use of ¨siuntix shows how to write degrees or radians easily.
+
+
+**Internal machinery:** two things have changed.
+
+    1) The cross product have been integrated to ¨tnscom because the codes used are very similar to the ones used for the 2D determinant.
+
+    1) An update have been done regarding the other new ¨api of ``\tns@det@plane@deco``.
+
+
+==========
+2020-07-29
+==========
+
+**Internal machinery for the documentation:** the ¨python file path::``build-01-dep[slow].py`` updates automatically a ¨tex file with all the packages used by ¨tnsgeo.
+
+
+==========
 2020-07-23
 ==========
 

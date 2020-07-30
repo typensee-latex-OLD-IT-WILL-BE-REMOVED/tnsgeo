@@ -233,10 +233,10 @@
 	Le package \texttt{tnsgeo}:\\%
 	pour la géométrie élémentaire\\%
 	{\footnotesize Code source disponible sur \url{https://github.com/typensee-latex/tnsgeo.git}.}\\%
-{\footnotesize Version \texttt{0.1.0-beta} développée et testée sur \macosxname{}.}%
+{\footnotesize Version \texttt{0.2.0-beta} développée et testée sur \macosxname{}.}%
 }
 \author{Christophe BAL}
-\date{2020-07-17}
+\date{2020-07-30}
 
 \maketitle
 
@@ -257,9 +257,41 @@
 
 Le package \verb+tnsgeo+ propose des macros utiles pour une rédaction efficace de textes parlant de géométrie élémentaire via un codage sémantique simple.
 
-\begin{remark}
-	Ce package s'appuie sur \verb+tnscom+ disponible sur \url{https://github.com/typensee-latex/tnscom.git}.
-\end{remark}
+
+% tnscom used - START
+\section{Beta-dépendance}
+
+\verb#tnscom# qui est disponible sur \url{https://github.com/typensee-latex/tnscom.git} est un package utilisé en coulisse.
+% tnscom used - END
+% List of packages - START
+\section{Packages utilisés}
+
+La roue ayant déjà été inventée, le package \verb#tnsgeo# réutilise les packages suivants sans aucun scrupule.
+
+\begin{multicols}{4}
+    \begin{itemize}
+        \item \verb#amssymb#
+        \item \verb#commado#
+        \item \verb#esvect#
+        \item \verb#etoolbox#
+        \item \verb#ifmtarg#
+        \item \verb#mathtools#
+        \item \verb#nicematrix#
+        \item \verb#trimspaces#
+        \item \verb#xstring#
+        \item \verb#yhmath#
+    \end{itemize}
+\end{multicols}
+% List of packages - END
+\section{Utiliser des unités S.I.}
+
+Comme l'excellent package \verb#siunitx# est chargé par \verb+tnscom+, il devient facile de travailler avec des unités de mesure tout en respectant \textbf{les conventions d'écriture sont françaises dès lors que vous aurez chargé \texttt{babel} avec l'option \texttt{french}} comme c'est le cas pour cette documentation.
+
+\begin{latexex}
+$\ang{180} = \SI{\pi}{\radian}$
+et
+$\SI{1}{km} = \SI{1e3}{m}$
+\end{latexex}
 \section{Points et lignes}
 
 \subsection{Points}
@@ -559,11 +591,8 @@ Dans l'exemple suivant, le préfixe \prefix{calc} est pour \whyprefix{calc}{uler
 
 \begin{latexex}
 $\calccrossprod{\vect{u}}{x}{y}{z}%
-               {\vect{v}}{x'}{y'}{z'}
- =
- \vcalccrossprod{u}{x}{y}{z}%
-                {v}{x'}{y'}{z'}$
-
+               {\vect{v}}{x'}{y'}{z'}$
+ou
 $\vcalccrossprod{AB}{x_B - x_A}%
                     {y_B - y_A}%
                     {z_B - z_A}%
@@ -573,11 +602,14 @@ $\vcalccrossprod{AB}{x_B - x_A}%
 \end{latexex}
 
 
-Avec un public averti on peut juste proposer les coordonnées sans les décorations comme ci-après via la version étoilée de \macro{vcalccrossprod} mais ceci fonctionne aussi avec \macro{calccrossprod}.
+Avec un public averti on peut juste proposer des croix voir juste les coordonnées sans les décorations comme ci-après via les versions simplement et doublement étoilées de \macro{vcalccrossprod} \emph{(ceci fonctionne aussi avec \macro{calccrossprod})}.
 
 \begin{latexex}
-$\vcalccrossprod*{u}{x}{y}{z}%
-                 {v}{x'}{y'}{z'}$
+$\vcalccrossprod* {u}{x}{y}{z}%
+                  {v}{x'}{y'}{z'}
+ =
+ \vcalccrossprod**{u}{x}{y}{z}%
+                  {v}{x'}{y'}{z'}$
 \end{latexex}
 
 
@@ -586,11 +618,14 @@ Ceci fonctionne aussi pour la macro \macro{calccrossprod}.
 Il peut sembler un peu lourd d'avoir des arguments pour des vecteurs non affichés mais ce choix permet à l'usage de faire des copier-coller redoutables d'efficacité !
 
 \begin{latexex}
-$\vcalccrossprod[novec]{u}{x}{y}{z}%
-                       {v}{x'}{y'}{z'}
+$\vcalccrossprod[novec]  {u}{x}{y}{z}%
+                         {v}{x'}{y'}{z'}
  =
- \vcalccrossprod*[novec]{u}{x}{y}{z}%
-                        {v}{x'}{y'}{z'}$
+ \vcalccrossprod*[novec] {u}{x}{y}{z}%
+                         {v}{x'}{y'}{z'}
+ =
+ \vcalccrossprod**[novec]{u}{x}{y}{z}%
+                         {v}{x'}{y'}{z'}$
 \end{latexex}
 
 
@@ -676,6 +711,54 @@ $\coordcrossprod[vb]%
 % ---------------------- %
 %\section{Vecteurs}
 
+\subsection{Plan -- Critère de colinéarité de deux vecteurs}
+
+\newparaexample{Version complète}
+
+Dans l'exemple suivant, le préfixe \prefix{coli} est pour \whyprefix{colin}{éarité} et \prefix{criteria} signifie \inenglish{critère}.
+
+\begin{latexex}
+$\colicriteria{\vect{u}}{x}{y}%
+              {\vect{v}}{x'}{y'}$
+ou
+$\colicriteria{\vect{AB}}%
+              {x_B - x_A}{y_B - y_A}%
+              {\vect{CD}}%
+              {x_D - x_C}{y_D - y_C}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Rédaction raccourcie pour les vecteurs}
+
+Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
+
+\begin{latexex}
+$\vcolicriteria{u}{x}{y}%
+               {v}{x'}{y'}$
+\end{latexex}
+
+
+% ---------------------- %
+
+
+\newparaexample{Versions sans les vecteurs}
+
+Dans l'exemple suivant, on utilise la valeur \verb+novec+ pour l'argument optionnel de \macro{vcolicriteria} qui par défaut est \verb+vec+ pour pour \whyprefix{vec}{teur}.
+À l'usage ceci permet des copier-coller très efficaces !
+
+
+\begin{latexex}
+ $\vcolicriteria[novec]{u}{x}{y}%
+                       {v}{x'}{y'}$
+\end{latexex}
+
+
+% ---------------------- %
+%\section{Vecteurs}
+
 \subsection{Plan -- Déterminant de deux vecteurs} \label{tnsgeo-colinearity-criteria}
 
 \newparaexample{Version décorée}
@@ -709,8 +792,6 @@ $\calcdetplane*{\vect{u}}{x}{y}%
 
 \newparaexample{Rédaction raccourcie pour les vecteurs}
 
-Dans l'exemple suivant, le préfixe \prefix{v} est pour \whyprefix{v}{ecteur}.
-
 \begin{latexex}
 $\vcalcdetplane{u}{x}{y}%
                {v}{x'}{y'}
@@ -724,10 +805,6 @@ $\vcalcdetplane{u}{x}{y}%
 
 
 \newparaexample{Versions sans les vecteurs}
-
-Dans l'exemple suivant, on utilise la valeur \verb+novec+ pour l'argument optionnel de \macro{vcalcdetplane} qui par défaut est \verb+vec+ pour pour \whyprefix{vec}{teur}.
-À l'usage ceci permet des copier-coller très efficaces !
-
 
 \begin{latexex}
  $\vcalcdetplane[novec] {u}{x}{y}%
@@ -1090,6 +1167,30 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % Changes shown - START
 
     \medskip
+    \item[2020-07-30] Nouvelle version mineure \verb+0.2.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic*{Critère de colinéarité}
+              ajout de la macro \macro{colicriteria}.
+    
+    	% -------------- %
+    
+        \item \topic*{Produit vectoriel} changement de l'API.
+        \begin{itemize}[itemsep=.5em]
+            \item \macro{vcalccrossprod*} devient \macro{vcalccrossprod**}.
+    
+            \item \macro{vcalccrossprod*} dessine des produits en croix à la place des boucles.
+        \end{itemize}
+    
+    	% -------------- %
+    
+    \end{itemize}
+    
+    \separation
+
+% ------------------------ %
+
+    \medskip
     \item[2020-07-17] Nouvelle version mineure \verb+0.1.0-beta+.
     
     \begin{itemize}[itemsep=.5em]
@@ -1121,6 +1222,12 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \newpage
 \section{Toutes les fiches techniques} \label{techincal-ids}
+
+
+
+
+
+
 
 
 
@@ -1337,34 +1444,43 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro[a]{calccrossprod }{8}  \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[a]{calccrossprod  }{9}  \hfill \mwhyprefix{calc}{ulate}
 
-\IDmacro[a]{calccrossprod*}{8}
+\IDmacro[a]{calccrossprod* }{9}
 
-\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+\IDmacro[a]{calccrossprod**}{9}
 
-\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
 
-\IDarg{5} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+\IDarg{1} \verb+vec+ ou \verb+novec+ suivant que l'on veut afficher ou non les vecteurs. 
 
-\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
+\IDarg{2} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{3..5} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{6} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDarg{7..9} les coordonnées du 2\ieme{} vecteur.
 
 
 \separation
 
 
-\IDmacro[a]{vcalccrossprod }{8}  \hfill \mwhyprefix{calc}{ulate}
+\IDmacro[a]{vcalccrossprod  }{8}  \hfill \mwhyprefix{calc}{ulate}
                                      et \mwhyprefix{v}{ector}
 
-\IDmacro[a]{vcalccrossprod*}{8}
+\IDmacro[a]{vcalccrossprod* }{8}
 
-\IDarg{1} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
+\IDmacro[a]{vcalccrossprod**}{8}
 
-\IDarg{2..4} les coordonnées du 1\ier{} vecteur.
+\IDarg{1} \verb+vec+ ou \verb+novec+ suivant que l'on veut afficher ou non les vecteurs. 
 
-\IDarg{5} le 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+\IDarg{2} le 1\ier{} vecteur sans utiliser la macro \macro{vect}.
 
-\IDarg{6..8} les coordonnées du 2\ieme{} vecteur.
+\IDarg{3..5} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{6} le 2\ieme{} vecteur sans utiliser la macro \macro{vect}.
+
+\IDarg{7..9} les coordonnées du 2\ieme{} vecteur.
 
 
 % ---------------------- %
@@ -1410,6 +1526,41 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 \IDarg{4..6} les coordonnées du 2\ieme{} vecteur.
 
 
+\subsubsection{Plan -- Critère de colinéarité de deux vecteurs}
+
+
+
+\IDmacro{colicriteria }{1}{6} \hfill \mwhyprefix{coli}{nearity}
+
+
+\IDoption{} la valeur par défaut est \verb+vec+. Voici les deux valeurs possibles.
+\begin{enumerate}
+	\item \verb+vec+ : les vecteurs sont affichés si besoin.
+
+	\item \verb+novec+ : les vecteurs ne sont jamais affichés.
+\end{enumerate}
+
+
+\IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDargs{2..3} les coordonnées du 1\ier{} vecteur.
+
+\IDarg{4} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
+
+\IDargs{5..6} les coordonnées du 2\ieme{} vecteur.
+
+
+\separation
+
+
+\IDmacro{vcolicriteria }{1}{6} \hfill \mwhyprefix{v}{ector}
+
+
+\IDoption{} voir les indications données pour la macro \macro{colicriteria}.
+
+\IDargs{1..6} voir les indications données pour la macro \macro{colicriteria}.
+
+
 \subsubsection{Plan -- Déterminant de deux vecteurs} \label{tnsgeo-colinearity-criteria}
 
 
@@ -1435,15 +1586,11 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \IDarg{1} le 1\ier{} vecteur qu'il faut taper via la macro \macro{vect}.
 
-\IDarg{2} la 1\iere{} coordonnée du 1\ier{} vecteur.
-
-\IDarg{3} la 2\ieme{} coordonnée du 1\ier{} vecteur.
+\IDargs{2..3} les coordonnées du 1\ier{} vecteur.
 
 \IDarg{4} le 2\ieme{} vecteur qu'il faut taper via la macro \macro{vect}.
 
-\IDarg{5} la 1\iere{} coordonnée du 2\ieme{} vecteur.
-
-\IDarg{6} la 2\ieme{} coordonnée du 2\ieme{} vecteur.
+\IDargs{5..6} les coordonnées du 2\ieme{} vecteur.
 
 
 \separation
@@ -1457,7 +1604,7 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 \IDoption{} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
 
-\IDarg{1..6} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
+\IDargs{1..6} voir les indications données pour les macros \macro{calcdetplane} et \macro{calcdetplane*}.
 
 
 \subsection{Géométrie cartésienne}
