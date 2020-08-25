@@ -1,4 +1,30 @@
 ==========
+2020-08-25
+==========
+
+**New minor version version::``0.3.0-beta`` of ¨tnsgeo:** see the changes below.
+
+
+**Vectors:** several new things have been done.
+
+    1) The new macro ``\pvect`` gives an easy way to obtain the same output as ``\vect{\pt{A}\pt{B}}``.
+
+    1) The macros ``\calccrossprod``, ``\vcalccrossprod``, ``\calcdetplane`` and ``\vcalcdetplane`` have a new ¨API that allow to use also arrows or a cross to explain visually the calculations (see also the following point).
+
+    1) The macro ``\coordcrossprod`` has been removed. instead the options ``exp``, ``texp`` and ``cexp`` of ``\vcalccrossprod`` and ``\calccrossprod`` allow to see the formulas for each coordinate.
+
+
+**Backstage machinery:** ¨tnscom has renamed ``\tns@multi@args`` to ``\tns@multi@wrap``.
+
+
+==========
+2020-08-10
+==========
+
+**Small change of ``\tns@det@plane@deco@cross``:** an update of ¨tnscom has implented the use of just one color.
+
+
+==========
 2020-08-09
 ==========
 

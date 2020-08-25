@@ -22,6 +22,31 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % Changes shown - START
 
     \medskip
+    \item[2020-08-25] Nouvelle version mineure \verb+0.3.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic*{Vecteur}
+              ajout de la macro \macro{pvect} pour ne pas avoir à taper \macro{pt}.
+    
+    	% -------------- %
+    
+        \item \topic*{Produit vectoriel et déterminant de deux vecteurs} nouveau changement de l'API.
+        \begin{itemize}[itemsep=.5em]
+            \item \macro{calccrossprod}, \macro{vcalccrossprod}, \macro{calcdetplane} et \macro{vcalcdetplane} permettent de tracer une croix fléchée ou non à la place de la boucle fléchée.
+    
+            \item \macro{coordcrossprod} a été supprimé. Il faut à la place utiliser l'une des options \verb#exp#, \verb#texp# et \verb#cexp# de \macro{vcalccrossprod} et \macro{calccrossprod}.
+        \end{itemize}
+    
+    	% -------------- %
+    
+    \end{itemize}
+    
+    \separation
+    
+
+% ------------------------ %
+
+    \medskip
     \item[2020-07-30] Nouvelle version mineure \verb+0.2.0-beta+.
     
     \begin{itemize}[itemsep=.5em]
