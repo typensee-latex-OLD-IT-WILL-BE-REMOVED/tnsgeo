@@ -141,18 +141,20 @@
 
 \let\tnsgeo@old@norm\norm
 
-\renewcommand\norm[2][b]{%
-    \IfEqCase{#1}{%
-        {b}{\tnsgeo@old@norm*{#2}}%
-        {s}{\tnsgeo@old@norm{#2}}%
-    }[%
-        \PackageError{tnsgeo}{unknown option}%
-                             {you can use b (default) or s.}%
-    ]
+
+\renewcommand\norm{\@ifstar{\tnsgeo@norm@star}{\tnsgeo@norm@no@star}}
+
+\newcommand\tnsgeo@norm@star[1]{%
+    \tnsgeo@old@norm{#1}%
 }
 
-\newcommand\vnorm[2][b]{%
-    \norm[#1]{\vect{#2}}%
+\newcommand\tnsgeo@norm@no@star[1]{%
+    \tnsgeo@old@norm*{#1}%
+}
+
+
+\newcommand\vnorm[1]{%
+    \norm*{\vect{#1}}%
 }
 
 
@@ -406,7 +408,7 @@
     % Default values
         \def\coordoption{p}%
         \def\expsymbol{\,}%
-    %
+    	%
         \ifbool{tnsgeo@calc@crossprod@option@sp}{%
             \def\coordoption{sp}%
         }{}%

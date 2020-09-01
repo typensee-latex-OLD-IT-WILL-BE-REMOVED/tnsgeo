@@ -1,0 +1,8 @@
+==========
+2020-09-02
+==========
+
+**New minor version version::``0.4.0-beta`` of ¨tnsgeo:** see the single changes below.
+
+
+**Vectors:** the star version of ``\norm`` is back.
