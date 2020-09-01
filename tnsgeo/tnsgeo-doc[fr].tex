@@ -290,10 +290,10 @@
 	Le package \texttt{tnsgeo}:\\%
 	pour la géométrie élémentaire\\%
 	{\footnotesize Code source disponible sur \url{https://github.com/typensee-latex/tnsgeo.git}.}\\%
-{\footnotesize Version \texttt{0.3.0-beta} développée et testée sur \macosxname{}.}%
+{\footnotesize Version \texttt{0.4.0-beta} développée et testée sur \macosxname{}.}%
 }
 \author{Christophe BAL}
-\date{2020-08-25}
+\date{2020-09-02}
 
 \maketitle
 
@@ -507,13 +507,11 @@ $\pvect{A}{B} = \vect{\pt{A}\pt{B}}$.
 
 \subsection{Norme}
 
-Ci-dessous l'argument optionnel de \macro{vnorm} vaut \prefix{b} par défaut pour \whyprefix{b}{ig} soit \inenglish{gros} mais l'on peut aussi utiliser \prefix{s} pour \whyprefix{s}{mall} soit \inenglish*{petit}. Par contre \macro{vnorm} n'a pas d'option.
-
 \begin{latexex}
  $\norm{\vect{i}} = \vnorm{i}$
 
- $\norm   {\dfrac{2}{7} \vect*{e}{k}}
-= \norm[s]{\dfrac{2}{7} \vect*{e}{k}}$
+ $\norm {\dfrac{2}{7} \vect*{e}{k}}
+= \norm*{\dfrac{2}{7} \vect*{e}{k}}$
 \end{latexex}
 
 
@@ -737,7 +735,7 @@ Parmi les options proposées par \macro{calccrossprod} et \macro{vcalccrossprod}
 }
 détaillant les calculs. Indiquons que \prefix{exp} est pour \whyprefix{exp}{and} soit \inenglish{développer}, \prefix{c} pour \macro{cdot} et enfin \prefix{t} pour \macro{times}
 \footnote{
-	Même si les vecteurs ne sont pas utilisés pour la mise en forme, on obtient ici une méthode très pratique à l'usage car elle permet de faire des copier-coller.
+	De nouveau on obtient ici une méthode très pratique à l'usage car elle permet de faire des copier-coller.
 }.
 
 
@@ -1272,6 +1270,22 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 % Changes shown - START
 
     \medskip
+    \item[2020-09-02] Nouvelle version mineure \verb+0.4.0-beta+.
+    
+    \begin{itemize}[itemsep=.5em]
+        \item \topic*{Vecteur}
+              retour de la macro \macro{norm*}.
+    
+    	% -------------- %
+    
+    \end{itemize}
+    
+    \separation
+    
+
+% ------------------------ %
+
+    \medskip
     \item[2020-08-25] Nouvelle version mineure \verb+0.3.0-beta+.
     
     \begin{itemize}[itemsep=.5em]
@@ -1479,15 +1493,9 @@ Tous les changements sont disponibles uniquement en anglais dans le dossier \ver
 
 
 
-\IDmacro{norm}{1}{1}
+\IDmacro[a]{norm }{1}
 
-\IDoption{} la valeur par défaut est \verb+b+. Deux options disponibles.
-\begin{enumerate}
-	\item \verb+b+ : des doubles barres extensibles sont utilisées.
-
-	\item \verb+s+ : des doubles barres non extensibles sont utilisées.
-\end{enumerate}
-
+\IDmacro[a]{norm*}{1}
 
 \IDarg{} le vecteur sur lequel appliquer la norme.
 
