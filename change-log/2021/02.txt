@@ -1,0 +1,8 @@
+==========
+2020-02-26
+==========
+
+**New minor version version::``0.5.0-beta`` of ¨tnsgeo:** see the single changes below.
+
+
+**Vectors:** deletion of the macros ``colicriteria`` and ``vcolicriteria`` that have become unuseful.
