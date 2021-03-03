@@ -21,8 +21,6 @@
 \RequirePackage{trimspaces}
 % X
 \RequirePackage{xstring}
-% Y
-\RequirePackage{yhmath}
 
 
 % ------------------ %
@@ -67,17 +65,17 @@
     \leftdelim{} #2 #3 \rightdelim{}%
 }
 
-\newcommand\pgline[3][O]{%
+\newcommand\gpline[3][O]{%
     \gline[#1]{\pt{#2}}{\pt{#3}}%
 }
 
 
-\newcommand\hgline[2]{%
+\newcommand\ghline[2]{%
     \gline[CO]{#1}{#2}%
 }
 
-\newcommand\phgline[2]{%
-    \pgline[CO]{#1}{#2}%
+\newcommand\gphline[2]{%
+    \gpline[CO]{#1}{#2}%
 }
 
 
@@ -86,7 +84,7 @@
 }
 
 \newcommand\psegment[2]{%
-    \pgline[C]{#1}{#2}%
+    \gpline[C]{#1}{#2}%
 }
 
 
@@ -745,6 +743,14 @@
 % -- ARC -- %
 % --------- %
 
+% Pris dans le source de yhmath
+\DeclareSymbolFont{yhlargesymbols}{OMX}{yhex}{m}{n}
+
+%\DeclareMathAccent{\widetilde}{\mathord}{yhlargesymbols}{"65}
+%\DeclareMathAccent{\widehat}{\mathord}{yhlargesymbols}{"62}
+%\DeclareMathAccent{\widetriangle}{\mathord}{yhlargesymbols}{"E6}
+\DeclareMathAccent{\wideparen}{\mathord}{yhlargesymbols}{"F3}
+
 \newcommand\circarc{\@ifstar{\tnsgeo@circ@arc@star}{\tnsgeo@circ@arc@no@star}}
 
 \newcommand*\tnsgeo@circ@arc@star[2]{%
@@ -759,6 +765,15 @@
 % --------------------- %
 % -- ANGLE GEOMETRIC -- %
 % --------------------- %
+
+% Pris dans le source de yhmath
+\DeclareSymbolFont{yhlargesymbols}{OMX}{yhex}{m}{n}
+
+%\DeclareMathAccent{\widetilde}{\mathord}{yhlargesymbols}{"65}
+\DeclareMathAccent{\widehat}{\mathord}{yhlargesymbols}{"62}
+%\DeclareMathAccent{\widetriangle}{\mathord}{yhlargesymbols}{"E6}
+\DeclareMathAccent{\wideparen}{\mathord}{yhlargesymbols}{"F3}
+
 
 % Source : http://forum.mathematex.net/latex-f6/arc-dont-le-nom-comporte-un-indice-t12392.html#p120204
 
