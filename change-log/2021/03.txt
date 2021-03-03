@@ -1,0 +1,11 @@
+==========
+2020-03-03
+==========
+
+**New minor version version::``0.6.0-beta`` of ¨tnsgeo:** see the changes below with some backward incompatibilities.
+
+
+**Points and lines:** the macros ``\hgline``, ``\pgline`` and ``\pghline`` have been renamed ``\ghline``, ``\gpline`` and ``\gphline`` respectively.
+
+
+**Arcs and angles:** we just import the macros ``\wideparen`` and ``\widehat`` from the package ``yhmath`` without loading all the fonts used by ``yhmath``.
